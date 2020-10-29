@@ -1,4 +1,4 @@
-import bgr from "../resources/login-background.jpg";
+import bgr from "../resources/building-2797818_1920.png";
 const { default: styled } = require("styled-components");
 
 const onHover = `
@@ -15,14 +15,14 @@ export const Container = styled.div`
   ${(props) => (props.margin ? `margin: ${props.margin};` : ``)}
   ${(props) =>
     props.bgr
-      ? `background-color: ${props.bgr};`
-      : `background-color: inherit;`}
+      ? `background-color: ${props.bgr};` 
+      : ``}
   ${(props) => (props.round ? `border-radius: 20px;` : ``)}
 
 `;
 
 export const ImageContainer = styled.div`
-  ${(props) => (props.img ? `background-color: red;` : ``)}
+  ${(props) => (props.img ? `background-image: url(${bgr});` : ``)}
   background-position: center;
   background-size: cover;
 `;

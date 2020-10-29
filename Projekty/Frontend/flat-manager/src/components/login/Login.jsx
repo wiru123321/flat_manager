@@ -51,9 +51,9 @@ const Login = () => {
     return (
       <form onSubmit={handlesubmit}>
         <Grid>
-          <Container width="40vw" height="40vh" bgr="#0e153a" col round>
-            <Typography className={classes.title}>Login</Typography>
-            <Paper className={classes.paper}>
+          <Container width="40vw" height="40vh" bgr="#5d5d5a" col round>
+            <Typography className={classes.title}>Zaloguj się do swojego konta</Typography>
+           <Paper className={classes.paper}>
               <TextField
                 onChange={(event) => {
                   setUsername(event.target.value);
@@ -98,7 +98,7 @@ const Login = () => {
               type="submit"
               startIcon={<ExitToAppIcon />}
             >
-              Login
+              Zaloguj
             </Button>
           </Container>
         </Grid>
@@ -108,24 +108,3 @@ const Login = () => {
 };
 
 export default Login;
-/**<InputControl
-            type="login"
-            value={username}
-            handleChange={setUsername}
-          >
-            Login
-          </InputControl>
-          {validate && !username && (
-            <Error message="Please, type your login." />
-          )}
-          <InputControl
-            type="password"
-            value={password}
-            handleChange={setPassword}
-          >
-            Password
-          </InputControl>
-          {validate && !password && (
-            <Error message="Please, type a password." />
-          )}
-          <Submit>Login</Submit> */
