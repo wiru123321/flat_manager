@@ -83,7 +83,7 @@ const Login = () => {
                 className={classes.textField}
                 placeholder="Hasło"
                 label={failed ? errorMessage : "Hasło"}
-                type="Hasło"
+                type="password"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
