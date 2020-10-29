@@ -57,14 +57,14 @@ export const login = ({ login, password }) => {
       if (error.response) {
         if (error.response.status === 403) {
           dispatch(setFailed(true));
-          dispatch(setErrorMessage("Your login or password is incorrect."));
+          dispatch(setErrorMessage("Nazwa użytkownika lub hasło jest niepoprawna."));
         } else {
           dispatch(setFailed(true));
-          dispatch(setErrorMessage("Unable to login."));
+          dispatch(setErrorMessage("Zalogowanie niemożliwe."));
         }
       } else {
         dispatch(setFailed(true));
-        dispatch(setErrorMessage("Cannot connect with server."));
+        dispatch(setErrorMessage("Brak połączenia z serverem."));
       }
     }
   };

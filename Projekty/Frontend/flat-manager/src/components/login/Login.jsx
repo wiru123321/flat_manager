@@ -61,8 +61,8 @@ const Login = () => {
                 variant="outlined"
                 error={failed}
                 className={classes.textField}
-                placeholder="login"
-                label={failed ? errorMessage : "login"}
+                placeholder="Zaloguj"
+                label={failed ? errorMessage : "Zaloguj"}
                 type="text"
                 InputProps={{
                   startAdornment: (
@@ -81,9 +81,9 @@ const Login = () => {
                 variant="outlined"
                 error={failed}
                 className={classes.textField}
-                placeholder="password"
-                label={failed ? errorMessage : "password"}
-                type="password"
+                placeholder="Hasło"
+                label={failed ? errorMessage : "Hasło"}
+                type="Hasło"
                 InputProps={{
                   startAdornment: (
                     <InputAdornment position="start">
