@@ -27,7 +27,7 @@ public class UserCreation {
         this.name = user.getName();
         this.surname = user.getSurname();
         this.phoneNumber = user.getPhoneNumber();
-        this.flatsDTO = flatsDTO;
+        //this.flatsDTO = flatsDTO;
         this.roleDTO = roleDTO;
     }
 
@@ -38,7 +38,7 @@ public class UserCreation {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
-        this.flatsDTO = flatsDTO;
+        //this.flatsDTO = flatsDTO;
         this.roleDTO = roleDTO;
     }
 }

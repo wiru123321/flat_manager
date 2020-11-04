@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { handleLogin } from "../../services/LoginService";
+import axios from "axios";
+
+const API_URL = "http://localhost:8080";
 
 const initialState = {
   success: false,
@@ -77,6 +80,18 @@ export const logout = () => {
     dispatch(setRedirectAddress("/login"));
     dispatch(allowRedirect(false));
   };
+};
+
+export const addUser = (userCration) => async (dispatch) => {
+  try {
+    await axios.post(API_URL + "/a/user", userCration, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default authSlice.reducer;
