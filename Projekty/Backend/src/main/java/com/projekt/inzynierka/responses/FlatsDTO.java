@@ -19,7 +19,11 @@ public class FlatsDTO {
     private AdressDTO adressDTO;
     private UserAccountDTO userAccountDTO;
 
-    public FlatsDTO(final Flats flats, final AdressDTO adressDTO,final UserAccountDTO userAccountDTO) {
+    public FlatsDTO() {
+
+    }
+
+    public FlatsDTO(final Flats flats, final AdressDTO adressDTO, final UserAccountDTO userAccountDTO) {
         this.area = flats.getArea();
         this.flor = flats.getFlor();
         this.peopleInFlat = flats.getPeopleInFlat();

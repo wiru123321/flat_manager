@@ -40,6 +40,6 @@ public class UserDTO {
         this.flatsDTO = flatsDTO;
     }
 
-    public UserDTO(User user, RoleDTO dtoByRoleName) {
+    public UserDTO() {
     }
 }

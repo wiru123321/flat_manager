@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Data
 @Getter
 @Setter
-public class UserAccountDTO {
+public class UserAccountDTO extends UserAccount {
     private Long id;
     private Integer rentCost;
     private Integer userRentPayment;

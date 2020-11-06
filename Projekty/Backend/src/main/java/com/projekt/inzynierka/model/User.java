@@ -4,8 +4,6 @@ package com.projekt.inzynierka.model;
 import com.projekt.inzynierka.responses.User.UserCreation;
 import com.projekt.inzynierka.responses.User.UserDTO;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import javax.persistence.*;
 
@@ -38,23 +36,27 @@ public class User {
     @Column(nullable = false)
     private Boolean isActive = true;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Flats flats;
+
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     private Role role;
 
     public User() {
     }
 
-    public User(Long id, final UserDTO userDTO, final Role role) {
+    public User(Long id, final UserDTO userDTO, final Role role,final Flats flats) {
         this.id = id;
         this.login = userDTO.getLogin();
         this.email = userDTO.getEmail();
         this.name = userDTO.getName();
         this.surname = userDTO.getSurname();
         this.phoneNumber = userDTO.getPhoneNumber();
+        this.flats = flats;
         this.role = role;
     }
 
-    public User(Long id, final UserCreation userCreation, final Role role) {
+    public User(Long id, final UserCreation userCreation, final Role role,final Flats flats) {
         this.id = id;
         this.login = userCreation.getLogin();
         this.password = userCreation.getPassword();
@@ -62,10 +64,11 @@ public class User {
         this.name = userCreation.getName();
         this.surname = userCreation.getSurname();
         this.phoneNumber = userCreation.getPhoneNumber();
+        this.flats = flats;
         this.role = role;
     }
 
-    public User(final Long id, final String login, final String password, final String email, final String name, final String surname, final String phoneNumber, final Role role) {
+    public User(final Long id, final String login, final String password, final String email, final String name, final String surname, final String phoneNumber, final Role role,final Flats flats) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -73,6 +76,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
+        this.flats = flats;
         this.role = role;
     }
 }

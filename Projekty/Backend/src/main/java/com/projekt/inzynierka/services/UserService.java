@@ -21,12 +21,14 @@ public class UserService implements UserServiceInterface {
 
     final UserRepository userRepository;
     final RoleService roleService;
+    final FlatsService flatsService;
     final PasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserService(final UserRepository userRepository, final RoleService roleService, final PasswordEncoder bCryptPasswordEncoder) {
+    public UserService(final UserRepository userRepository, final RoleService roleService, FlatsService flatsService, final PasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.roleService = roleService;
+        this.flatsService = flatsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
@@ -68,6 +70,7 @@ public class UserService implements UserServiceInterface {
         user.setPhoneNumber(phoneNumber);
         userRepository.save(user);
     }
+
 
     @Override
     public boolean changePassword(final User user, final String password) {
@@ -111,13 +114,13 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override //NO PASSWORD MAPPING
-    public User mapRestModel(final Long id, final UserDTO userDTO) {
-        return new User(id, userDTO, roleService.getEntityByRoleName(userDTO.getRoleDTO().getName()));
+    public User mapRestModel(final Long id, final UserDTO userDTO, Long flatId) {
+        return new User(id, userDTO, roleService.getEntityByRoleName(userDTO.getRoleDTO().getName()),flatsService.getEntityById(flatId));
     }
 
     @Override
-    public User mapCreationModel(final Long id, final UserCreation userCreation) {
-        return new User(id, userCreation, roleService.getEntityByRoleName(userCreation.getRoleDTO().getName()));
+    public User mapCreationModel(final Long id, final UserCreation userCreation, final Long flatId) {
+        return new User(id, userCreation, roleService.getEntityByRoleName(userCreation.getRoleDTO().getName()),flatsService.getEntityById(flatId));
     }
 
     @Override
@@ -136,15 +139,21 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
+    public User mapCreationModel(Long id, UserCreation userCreation) {
+        return null;
+    }
+
+
+    @Override
     public UserDTO getDTOByLogin(final String login) {
         final User user = userRepository.findByLogin(login);
-        return new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()));
+        return new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()),null);
     }
 
     @Override
     public UserDTO getDTOByEmail(final String email) {
         final User user = userRepository.findByEmail(email);
-        return new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()));
+        return new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()),null);
     }
 
     @Override
@@ -163,7 +172,7 @@ public class UserService implements UserServiceInterface {
     private List<UserDTO> mapRestList(final List<User> userArrayList) {
         final ArrayList<UserDTO> userDTOArrayList = new ArrayList<>();
         userArrayList.forEach((user) -> {
-            final UserDTO userDTO = new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()));
+            final UserDTO userDTO = new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()),null);
             userDTOArrayList.add(userDTO);
         });
         return userDTOArrayList;

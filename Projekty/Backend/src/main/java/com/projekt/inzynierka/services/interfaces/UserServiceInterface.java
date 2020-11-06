@@ -29,15 +29,19 @@ public interface UserServiceInterface {
 
     void changePhoneNumber(User user, String phoneNumber);
 
-    User mapRestModel(Long id, UserDTO userDTO);
+    //NO PASSWORD MAPPING
+    User mapRestModel(Long id, UserDTO userDTO, Long flatId);
+
+    User mapCreationModel(Long id, UserCreation userCreation, Long flatId);
 
     User getEntityByLogin(String name);
+
+    User getEntityByLoginAndisActive(final String login,final Boolean isActive);
 
     User getEntityByEmail(String email);
 
     User mapCreationModel(Long id, UserCreation userCreation);
 
-    User getEntityByLoginAndisActive(final String login, final Boolean isActive);
 
     UserDTO getDTOByEmail(String email);
 

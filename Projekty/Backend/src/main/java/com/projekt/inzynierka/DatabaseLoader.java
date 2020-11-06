@@ -1,10 +1,8 @@
 package com.projekt.inzynierka;
 
 
-import com.projekt.inzynierka.model.Role;
-import com.projekt.inzynierka.model.User;
-import com.projekt.inzynierka.repositories.RoleRepository;
-import com.projekt.inzynierka.repositories.UserRepository;
+import com.projekt.inzynierka.model.*;
+import com.projekt.inzynierka.repositories.*;
 import com.projekt.inzynierka.services.RoleService;
 import com.projekt.inzynierka.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -24,7 +23,11 @@ public class DatabaseLoader implements CommandLineRunner {
 
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
+    private final FlatsRepository flatsRepository;
+    private final AdressRepository adressRepository;
+    private final UserAccountRepository userAccountRepository;
 
+    
     private final RoleService roleService;
     private final UserService userService;
 
@@ -36,10 +39,13 @@ public class DatabaseLoader implements CommandLineRunner {
 
     @Autowired
     public DatabaseLoader(
-                          final RoleRepository roleRepository,final UserRepository userRepository,
-                          final RoleService roleService, final UserService userService) {
+            final RoleRepository roleRepository, final UserRepository userRepository,
+            FlatsRepository flatsRepository, AdressRepository adressRepository, UserAccountRepository userAccountRepository, final RoleService roleService, final UserService userService) {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
+        this.flatsRepository = flatsRepository;
+        this.adressRepository = adressRepository;
+        this.userAccountRepository = userAccountRepository;
 
 
         this.roleService = roleService;
@@ -57,9 +63,12 @@ public class DatabaseLoader implements CommandLineRunner {
             }
             stringList.clear();
 
+            Long id = adressRepository.save(new Adress(null,"Kato","Kato","Kato","Kato")).getId();
+            Long idAcc = userAccountRepository.save(new UserAccount(null,5,5,5,5,5,5, LocalDateTime.of(2020, 3, 20, 0, 0),LocalDateTime.of(2020, 3, 20, 0, 0),true)).getId();
 
-            userRepository.save(new User(null, "admin123", passwordEncoder.encode("apassword123"), "admin@email.com", "Jan", "Kowalski", "513238338", roleRepository.findByName("ADMIN")));
-            userRepository.save(new User(null, "user123", passwordEncoder.encode("upassword123"), "user@email.com", "Andrzej", "Wywrot", "713782393", roleRepository.findByName("EMPLOYEE")));
+            Long idFlat = flatsRepository.save(new Flats(null,5,5,5,5,true,true,adressRepository.findById(id).get(),userAccountRepository.findById(idAcc).get())).getId();
+
+            userRepository.save(new User(null, "admin123", passwordEncoder.encode("apassword123"), "admin@email.com", "Jan", "Kowalski", "513238338", roleRepository.findByName("ADMIN"),flatsRepository.findById(idFlat).get()));
         }
     }
 }

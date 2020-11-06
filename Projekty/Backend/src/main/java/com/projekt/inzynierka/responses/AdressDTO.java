@@ -8,7 +8,7 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class AdressDTO {
+public class AdressDTO extends Adress {
     private Long id;
     private String town;
     private String postalCode;

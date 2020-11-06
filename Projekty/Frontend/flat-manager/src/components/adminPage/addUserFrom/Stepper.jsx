@@ -160,11 +160,22 @@ export default function CustomizedSteppers() {
                 rooms:rooms,
                 isBalcony:isBalcony,
                 isActive:true,
-                AdressDTO:{
+                adressDTO:{
                     town:town,
                     postalCode:postalCode,
                     street:street,
                     number:number,
+                },
+                userAccountDTO:{
+                  rentCost:"500",
+                  userRentPayment:"500",
+                  rubbishCost:"500",
+                  userRubbishPayment:"500",
+                  waterCost:"500",
+                  userWaterCost:"500",
+                  paymentDate:"2007-12-03T10:15:30",
+                  userPaymentDate:"2007-12-03T10:15:30",
+                  isActive:true
                 }
             }
           };
