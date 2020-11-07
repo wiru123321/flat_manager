@@ -22,6 +22,7 @@ const initialState = {
     postalCode: "",
     street: "",
     number: "",
+    onError:false,
 };
 
 export const addUserSlice = createSlice({
@@ -82,6 +83,9 @@ export const addUserSlice = createSlice({
       setNumber: (state, action) => {
         state.number = action.payload;
       },
+      setError: (state, action) => {
+        state.onError = action.payload;
+      },
   },
 });
 
@@ -104,6 +108,7 @@ export const {
     setPostalCode,
     setStreet,
     setNumber,
+    setError,
 } = addUserSlice.actions;
 
 export const selectAll = (state) => state.addUser;

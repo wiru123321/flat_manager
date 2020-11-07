@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import InputData from "./InputData";
-import {addUser} from "../../../features/authentication/authSlice";
+import {TextValidator} from 'react-material-ui-form-validator';
 import { Grid,Select,MenuItem,InputLabel, Button, Paper } from '@material-ui/core';
 import {selectAll,setFirstname,
   setLastname,
@@ -41,21 +41,6 @@ const AddUserForm = () => {
     dispatch(setPassword(event.target.value));
   const handleRePasswordChange = (event) =>
     dispatch(setRePassword(event.target.value));
-    function submit(event) {
-        event.preventDefault();
-        let user = {
-          email:email,
-          login:login,
-          phoneNumber:phoneNumber,
-          password:password,
-          firstname:firstname,
-          lastname:lastname,
-          roleDTO: { name: role},
-        };
-        console.log("zatwierdzono");
-        console.log(user);
-          //dispatch(addUser(user));
-      }
     return (
             <Grid
             container
@@ -71,58 +56,47 @@ const AddUserForm = () => {
                     direction="row"
                     justify="space-evenly"
                     alignItems="center"
-                    style={{width:"25vw"}}>
-              <Grid item xs={6}>
-            <InputData
-            onChangeHandler={handleFirstnameChange}
-            value={firstname}
-            label={"Wprowadź imie"}
-            />
+                    style={{width:"25vw",marginBottom:"3vh"}}>
+              <Grid item xs={6} >
+            <TextValidator id="outlined-basic" label="Wprowadź imie" variant="outlined"  
+            onChange={handleFirstnameChange} value={firstname} validators={['required']} errorMessages={['this field is required']}/>
             </Grid>
             <Grid item xs={6}>
-             <InputData
-            onChangeHandler={handleLastnameChange}
-            value={lastname}
-            label={"Wprowadź nazwisko"}
-            />
+            <TextValidator id="outlined-basic" label="Wprowadź nazwisko" variant="outlined"  
+            onChange={handleLastnameChange} value={lastname} validators={['required']} errorMessages={['this field is required']}/>
             </Grid>
             </Grid>
             <Grid container
                   direction="row"
                   justify="space-evenly"
                   alignItems="center"
-                  style={{width:"25vw"}}>
+                  style={{width:"25vw",marginBottom:"3vh"}}>
             <Grid item xs={6}>
-             <InputData
-            onChangeHandler={handleEmailChange}
-            value={email}
-            label={"Wprowadź email"}
-            />
+            <TextValidator id="outlined-basic" label="Wprowadź email" variant="outlined"  
+            onChange={handleEmailChange} value={email} validators={['required','isEmail']} errorMessages={['this field is required', 'email is not valid']}/>
             </Grid>
             <Grid item xs={6}>
-             <InputData
-            onChangeHandler={handlePhoneNumberChange}
-            value={phoneNumber}
-            label={"Wprowadź telefon"}
-            />
+            <TextValidator id="outlined-basic" label="Wprowadź telefon" variant="outlined"  
+            onChange={handlePhoneNumberChange} value={phoneNumber} validators={['required',"minStringLength:9", "maxStringLength:9"]} errorMessages={['this field is required','Numer posiada 9 liczb']}/>
             </Grid>
+            </Grid>
+            <Grid style={{marginBottom:"3vh"}}>
+            <TextValidator id="outlined-basic" label="Wprowadź login" variant="outlined"  onChange={handleLoginChange} value={login} validators={['required']} errorMessages={['this field is required']}/>
+            </Grid>
+            <Grid container
+                  direction="row"
+                  justify="space-evenly"
+                  alignItems="center"
+                  style={{width:"25vw",marginBottom:"3vh"}}>
+            <Grid item xs={6}>
+            <TextValidator id="outlined-basic" label="Wprowadź hasło" type="password" variant="outlined"  onChange={handlePasswordChange} value={password} validators={['required']} errorMessages={['this field is required']}/>
+            </Grid>
+            <Grid item xs={6} >
+             <TextValidator id="outlined-basic" label="Powtórz hasło" type="password" variant="outlined"  onChange={handleRePasswordChange} value={rePassword} validators={['isPasswordMatch','required']} errorMessages={['password mismatch','this field is required']}/>
+            </Grid>
+
             </Grid>
             
-            <InputData
-            onChangeHandler={handleLoginChange}
-            value={login}
-            label={"Wprowadź login"}
-            />
-            <InputData
-            onChangeHandler={handlePasswordChange}
-            value={password}
-            label={"Wprowadź hasło"}
-            />
-            <InputData
-            onChangeHandler={handleRePasswordChange}
-            value={rePassword}
-            label={"Powtórz hasło"}
-            />
             <InputLabel>Rola</InputLabel>
             <Select
                 required

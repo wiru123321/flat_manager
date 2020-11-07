@@ -14,7 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import AddUserForm from "../addUserFrom/AddUserForm";
 import AddFlatForm from "../addUserFrom/AddFlatForm";
 import FormSummary from "../addUserFrom/FormSummary";
-import {selectAll,addUser} from "../../../features/addUserSlice/addUserSlice";
+import {selectAll,addUser,setError} from "../../../features/addUserSlice/addUserSlice";
+import { ValidatorForm} from 'react-material-ui-form-validator';
 
 
 const ColorlibConnector = withStyles({
@@ -137,11 +138,52 @@ export default function CustomizedSteppers() {
         town,
         postalCode,
         street,
-        number,     
+        number,
+        onError,  
     }= userSelect
   const steps = getSteps();
 
+  const submit=()=>{
+    let user = {
+      email:email,
+      login:login,
+      phoneNumber:phoneNumber,
+      password:password,
+      name:firstname,
+      surname:lastname,
+      roleDTO: { name: role},
+      flatsDTO:{
+          area:area,
+          flor:flor,
+          peopleInFlat:peopleInFlat,
+          rooms:rooms,
+          isBalcony:isBalcony,
+          isActive:true,
+          adressDTO:{
+              town:town,
+              postalCode:postalCode,
+              street:street,
+              number:number,
+          },
+          userAccountDTO:{
+            rentCost:"500",
+            userRentPayment:"500",
+            rubbishCost:"500",
+            userRubbishPayment:"500",
+            waterCost:"500",
+            userWaterCost:"500",
+            paymentDate:"2007-12-03T10:15:30",
+            userPaymentDate:"2007-12-03T10:15:30",
+            isActive:true
+          }
+      }
+    };
+    console.log(user);
+    //dispatch(addUser(user));
+}
+
   const handleNext = () => {
+    if((activeStep)!==2)
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     if((activeStep)==2)
     {
@@ -179,12 +221,34 @@ export default function CustomizedSteppers() {
                 }
             }
           };
-          dispatch(addUser(user));
-    }
+          if(email&&login&&
+            phoneNumber&&
+            password&&
+            firstname&&
+            lastname&&
+            role&&
+            area&&
+            flor&&
+            peopleInFlat&&
+            rooms&&
+            town&&
+            postalCode&&
+            street&&
+            number)
+            {
+              dispatch(addUser(user));
+              setActiveStep((prevActiveStep) => prevActiveStep + 1);
+            }
+          else
+          {
+            dispatch(setError(true));
+          }
+        }
   };
 
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    dispatch(setError(false));
   };
 
   const handleReset = () => {
@@ -195,6 +259,7 @@ export default function CustomizedSteppers() {
     <div className={classes.root}>
       <Stepper alternativeLabel activeStep={activeStep} connector={<ColorlibConnector />}>
         {steps.map((label) => (
+
           <Step key={label}>
             <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
           </Step>
@@ -212,7 +277,9 @@ export default function CustomizedSteppers() {
           </div>
         ) : (
           <div>
+            <ValidatorForm onSubmit={submit}>
             <Typography className={classes.instructions}>{getStepContent(activeStep)}</Typography>
+            
             <div style={{justifyContent:"center"}}>
               <Button color="primary" disabled={activeStep === 0} onClick={handleBack} className={classes.button} >
                 Wróć
@@ -222,10 +289,15 @@ export default function CustomizedSteppers() {
                 color="primary"
                 onClick={handleNext}
                 className={classes.button}
+                type="submit"
               >
                 {activeStep === steps.length - 1 ? 'Zakończ' : 'Następna strona'}
               </Button>
+              {
+                onError? <a>Wypełnij wszystkie pola</a>:null
+              }
             </div>
+            </ValidatorForm>
           </div>
         )}
       </div>
