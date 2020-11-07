@@ -5,14 +5,18 @@ import com.projekt.inzynierka.model.Flats;
 import com.projekt.inzynierka.model.User;
 import com.projekt.inzynierka.model.UserAccount;
 import com.projekt.inzynierka.responses.User.UserCreation;
+import com.projekt.inzynierka.responses.User.UserDTO;
 import com.projekt.inzynierka.services.AdressService;
 import com.projekt.inzynierka.services.FlatsService;
 import com.projekt.inzynierka.services.UserAccountService;
 import com.projekt.inzynierka.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -31,6 +35,13 @@ public class UserController {
         this.flatsService = flatsService;
         this.userAccountService = userAccountService;
         this.passwordEncoder = passwordEncoder;
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/users")
+    public ResponseEntity<?> getAllActiveUsersExceptCurrent() {
+        final List<UserDTO> userDTOList = userService.getAllActiveUserDTOs();
+        userDTOList.remove(userService.getDTOByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));
+        return ResponseEntity.ok(userDTOList);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/user")

@@ -2,6 +2,7 @@ package com.projekt.inzynierka.services;
 
 import com.projekt.inzynierka.model.User;
 import com.projekt.inzynierka.repositories.UserRepository;
+import com.projekt.inzynierka.responses.FlatsDTO;
 import com.projekt.inzynierka.responses.User.UserCreation;
 import com.projekt.inzynierka.responses.User.UserDTO;
 //import com.projekt.inzynierka.responses.User.UserUpdate;
@@ -165,14 +166,15 @@ public class UserService implements UserServiceInterface {
 
     @Override
     public List<UserDTO> getAllActiveUserDTOs() {
-        final ArrayList<User> userArrayList = new ArrayList<>(userRepository.findAllByIsActive(true));
+        final ArrayList<User> userArrayList = new ArrayList<>(userRepository.findAllByIsActiveAndAndRole_Name(true,"EMPLOYEE"));
         return this.mapRestList(userArrayList);
     }
+
 
     private List<UserDTO> mapRestList(final List<User> userArrayList) {
         final ArrayList<UserDTO> userDTOArrayList = new ArrayList<>();
         userArrayList.forEach((user) -> {
-            final UserDTO userDTO = new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()),null);
+            final UserDTO userDTO = new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()),new FlatsDTO(user.getFlats()));
             userDTOArrayList.add(userDTO);
         });
         return userDTOArrayList;

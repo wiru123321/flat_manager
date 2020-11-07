@@ -23,6 +23,17 @@ public class FlatsDTO {
 
     }
 
+    public FlatsDTO(final Flats flats) {
+        this.area = flats.getArea();
+        this.flor = flats.getFlor();
+        this.peopleInFlat = flats.getPeopleInFlat();
+        this.rooms = flats.getRooms();
+        this.isBalcony = flats.getIsBalcony();
+        this.isActive = flats.getIsActive();
+        this.adressDTO = new AdressDTO(flats.getAdress());
+        this.userAccountDTO = new UserAccountDTO(flats.getUserAccount());
+    }
+
     public FlatsDTO(final Flats flats, final AdressDTO adressDTO, final UserAccountDTO userAccountDTO) {
         this.area = flats.getArea();
         this.flor = flats.getFlor();

@@ -17,4 +17,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
     User findByLoginAndIsActive(String login, Boolean active);
 
     List<User> findAllByIsActive(Boolean isActive);
+
+    List<User> findAllByIsActiveAndAndRole_Name(Boolean isActive,String role_name);
 }
