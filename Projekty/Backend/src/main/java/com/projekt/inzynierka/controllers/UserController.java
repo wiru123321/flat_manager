@@ -59,4 +59,11 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(userCreation.getPassword()));
         return ResponseEntity.ok(userService.addEntityToDB(user));
     }
+    @RequestMapping(method = RequestMethod.PUT, value = "/user/{login}")
+    public ResponseEntity<?> updateDataBaseUser(@PathVariable final String login, @RequestBody final UserAccount userAccount) {
+        if (!userService.checkIfUserWithLoginExists(login)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no user with passed login.");
+        }
+        return ResponseEntity.ok(userService.updateUserInDB(login, userAccount));
+    }
 }

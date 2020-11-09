@@ -2,15 +2,18 @@ package com.projekt.inzynierka.services.interfaces;
 
 
 import com.projekt.inzynierka.model.User;
+import com.projekt.inzynierka.model.UserAccount;
 import com.projekt.inzynierka.responses.User.UserCreation;
 import com.projekt.inzynierka.responses.User.UserDTO;
-//import com.projekt.inzynierka.responses.User.UserUpdate;
 
 import java.util.List;
 
 public interface UserServiceInterface {
     //Long updateUserInDB(String login, UserUpdate userUpdate);
     Long updateUserInDB(String login);
+
+    Long updateUserInDB(String login, UserAccount userAccount);
+
     Long addEntityToDB(User user);
 
     Long setUserIsNotActive(String login);

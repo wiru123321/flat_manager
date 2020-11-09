@@ -1,6 +1,7 @@
 package com.projekt.inzynierka.services;
 
 import com.projekt.inzynierka.model.User;
+import com.projekt.inzynierka.model.UserAccount;
 import com.projekt.inzynierka.repositories.UserRepository;
 import com.projekt.inzynierka.responses.FlatsDTO;
 import com.projekt.inzynierka.responses.User.UserCreation;
@@ -33,9 +34,25 @@ public class UserService implements UserServiceInterface {
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
+
     @Override
     public Long updateUserInDB(String login) {
         return null;
+    }
+
+    @Override
+    public Long updateUserInDB(final String login, final UserAccount userAccount) {
+        final User oldUser = this.getEntityByLoginAndisActive(login, true);
+        oldUser.getFlats().getUserAccount().setRentCost(userAccount.getRentCost());
+        oldUser.getFlats().getUserAccount().setRubbishCost(userAccount.getRubbishCost());
+        oldUser.getFlats().getUserAccount().setWaterCost(userAccount.getWaterCost());
+        oldUser.getFlats().getUserAccount().setUserRentPayment(userAccount.getUserRentPayment());
+        oldUser.getFlats().getUserAccount().setUserRubbishPayment(userAccount.getUserRubbishPayment());
+        oldUser.getFlats().getUserAccount().setUserWaterCost(userAccount.getUserWaterCost());
+        oldUser.getFlats().getUserAccount().setPaymentDate(userAccount.getPaymentDate());
+        oldUser.getFlats().getUserAccount().setUserPaymentDate(userAccount.getUserPaymentDate());
+        oldUser.getFlats().getUserAccount().setIsActive(userAccount.getIsActive());
+        return userRepository.save(oldUser).getId();
     }
 
     @Override

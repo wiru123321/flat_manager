@@ -9,4 +9,5 @@ public interface UserAccountServiceInterface {
     UserAccount mapRestModel(Long id, UserAccountDTO userAccount);
 
     UserAccount getEntityById(Long id);
+
 }

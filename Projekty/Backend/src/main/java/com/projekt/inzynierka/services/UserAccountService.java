@@ -3,10 +3,11 @@ package com.projekt.inzynierka.services;
 import com.projekt.inzynierka.model.UserAccount;
 import com.projekt.inzynierka.repositories.UserAccountRepository;
 import com.projekt.inzynierka.responses.UserAccountDTO;
+import com.projekt.inzynierka.services.interfaces.UserAccountServiceInterface;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserAccountService implements com.projekt.inzynierka.services.interfaces.UserAccountServiceInterface {
+public class UserAccountService implements UserAccountServiceInterface {
     private final UserAccountRepository userAccountRepository;
 
     public UserAccountService(final UserAccountRepository userAccountRepository) {
@@ -26,4 +27,6 @@ public class UserAccountService implements com.projekt.inzynierka.services.inter
     public UserAccount getEntityById(final Long id) {
         return userAccountRepository.findById(id).get();
     }
+
+
 }
