@@ -1,13 +1,16 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useDispatch, useSelector } from "react-redux";
 import AppBar from '@material-ui/core/AppBar';
+import {selectUsers,fetchUsers} from "../../../features/userSlice/userSlice";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import UserPayments from "./UserPayments";
+import { Table,Form,Col } from "react-bootstrap";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,6 +65,13 @@ const UsersPayments =() => {
     setValue(index);
   };
 
+  const dispatch = useDispatch();
+    
+  useEffect(()=>{
+      dispatch(fetchUsers());
+  },[]);
+  const users = useSelector(selectUsers);
+
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
@@ -83,10 +93,48 @@ const UsersPayments =() => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-         <UserPayments/>
+        <div style={{ height: "100%", width: '95vw' }}>
+     <Table striped bordered hover size="sm" responsive style={{height:"100%"}}>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Imie</th>
+      <th>Nazwisko</th>
+      <th>Wprowadź opłate za czynsz</th> 
+      <th>Wprowadź opłate za wode</th>
+      <th>Wprowadź opłate za śmieci</th>
+    </tr>
+  </thead>
+  <tbody>
+  {
+      users.map((user,index)=><UserPayments user={user} index={index} option={true}/>)
+  }
+    
+  </tbody>
+</Table>
+    </div>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-          Potwierdź wpłaty mieszkańców.
+        <div style={{ height: "100%", width: '95vw' }}>
+     <Table striped bordered hover size="sm" responsive style={{height:"100%"}}>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Imie</th>
+      <th>Nazwisko</th>
+      <th>Wprowadź opłate za czynsz</th> 
+      <th>Wprowadź opłate za wode</th>
+      <th>Wprowadź opłate za śmieci</th>
+    </tr>
+  </thead>
+  <tbody>
+  {
+      users.map((user,index)=><UserPayments user={user} index={index} option={false}/>)
+  }
+    
+  </tbody>
+</Table>
+    </div>
         </TabPanel>
       </SwipeableViews>
     </div>

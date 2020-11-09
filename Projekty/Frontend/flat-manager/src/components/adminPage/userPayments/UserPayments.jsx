@@ -1,42 +1,52 @@
-import React, {useEffect} from 'react';
-import { Table } from "react-bootstrap";
-import {selectUsers,fetchUsers} from "../../../features/userSlice/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useEffect,useState} from 'react';
+import { Table,Form,Col } from "react-bootstrap";
+import {updateUser} from "../../../features/userSlice/userSlice";
+import { useDispatch } from "react-redux";
+import PaymentsForm from "./PaymentsForm";
 
-const UserPayments = () => {
-    const dispatch = useDispatch();
-    useEffect(()=>{
-        dispatch(fetchUsers());
-    },[]);
+const UserPayments = ({user,index,option}) => { 
+  const dispatch = useDispatch();
+    const [userPaymentsState, setUserPaymentsState] = useState({
+      rentCost: user.flatsDTO.userAccountDTO.rentCost,
+      rubbishCost: user.flatsDTO.userAccountDTO.rubbishCost,
+      waterCost: user.flatsDTO.userAccountDTO.waterCost,
+      userRentPayment:user.flatsDTO.userAccountDTO.userRentPayment,
+      userRubbishPayment:user.flatsDTO.userAccountDTO.userRubbishPayment,
+      userWaterCost:user.flatsDTO.userAccountDTO.userWaterCost,
+      paymentDate:user.flatsDTO.userAccountDTO.paymentDate,
+      userPaymentDate:user.flatsDTO.userAccountDTO.userPaymentDate,
+      isActive:user.flatsDTO.userAccountDTO.isActive
+    });
 
-    const users = useSelector(selectUsers);
+    const handleRentCostChange = (event) => {
+      setUserPaymentsState({
+        ...userPaymentsState,
+        rentCost: event.target.value,
+      });
+    };
+    const submit = (event) => {
+      dispatch(updateUser(user.login,userPaymentsState));
+      console.log("jestem")
+    }
+
+    const handleRubbishCostCostChange = (event) => {
+      setUserPaymentsState({
+        ...userPaymentsState,
+        rubbishCost: event.target.value,
+      });
+    };
+
+    const handleWaterCostCostChange = (event) => {
+      setUserPaymentsState({
+        ...userPaymentsState,
+        waterCost: event.target.value,
+      });
+    };
+
   return (
-    <div style={{ height: 400, width: '100%' }}>
-     <Table striped bordered hover size="sm">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Imie</th>
-      <th>Nazwisko</th>
-      <th>Czynsz</th>
-      <th>Opłata za wode</th>
-      <th>Opłata za śmieci</th>
-    </tr>
-  </thead> <tbody>
-  {
-      users.map((user,index)=><tr>
-      <td>{index}</td>
-      <td>{user.name}</td>
-      <td>{user.surname}</td>
-      <td>{user.flatsDTO.userAccountDTO.rentCost} zł</td>
-      <td>{user.flatsDTO.userAccountDTO.waterCost} zł</td>
-      <td>{user.flatsDTO.userAccountDTO.rubbishCost} zł</td>
-    </tr>)
-  }
-    
-  </tbody>
-</Table>
-    </div>
+    <>
+     <PaymentsForm user={userPaymentsState} handleRentCostChange={handleRentCostChange} handleRubbishCostCostChange={handleRubbishCostCostChange} handleWaterCostCostChange={handleWaterCostCostChange} index={index} info={user} onPointerLeave={submit} option={option}/>
+    </>
   );
 }
 
