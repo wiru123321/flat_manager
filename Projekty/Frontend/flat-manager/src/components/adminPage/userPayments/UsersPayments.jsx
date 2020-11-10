@@ -11,6 +11,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import UserPayments from "./UserPayments";
 import { Table,Form,Col } from "react-bootstrap";
+import {Text} from '@material-ui/core';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -55,8 +56,15 @@ const useStyles = makeStyles((theme) => ({
 const UsersPayments =() => {
   const classes = useStyles();
   const theme = useTheme();
+  const monthNames = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec",
+  "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"
+];
   const [value, setValue] = React.useState(0);
 
+  const now = new Date();
+  const currentMonth = (now.getMonth() + 1).toString();
+  const year = now.getFullYear();
+  const dataToSubmit = year+"-"+currentMonth+"-01T00:00:01";
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -71,7 +79,6 @@ const UsersPayments =() => {
       dispatch(fetchUsers());
   },[]);
   const users = useSelector(selectUsers);
-
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
@@ -93,8 +100,13 @@ const UsersPayments =() => {
         onChangeIndex={handleChangeIndex}
       >
         <TabPanel value={value} index={0} dir={theme.direction}>
-        <div style={{ height: "100%", width: '95vw' }}>
-     <Table striped bordered hover size="sm" responsive style={{height:"100%"}}>
+        <div style={{ height: "100%", width: '95vw'}}>
+          <div style={{width: '100%',textAlign:"center",marginBottom:"2vh"}}>
+        <a
+    style={{width:"10%",fontWeight:"bold"}}
+  >Okres rozliczeniowy: {monthNames[currentMonth-1]} {year}</a>
+  </div>
+     <Table striped bordered hover size="sm" responsive style={{height:"100%",textAlign:"center"}}>
   <thead>
     <tr>
       <th>#</th>
@@ -103,20 +115,20 @@ const UsersPayments =() => {
       <th>Zmień opłate za czynsz</th> 
       <th>Zmień opłate za wode</th>
       <th>Zmień opłate za śmieci</th>
+      <th>Wystaw rachunek</th>
     </tr>
   </thead>
   <tbody>
   {
-      users.map((user,index)=><UserPayments user={user} index={index} option={true}/>)
+      users.map((user,index)=><UserPayments user={user} index={index} option={true} dataToSubmit={dataToSubmit}/>)
   }
-    
   </tbody>
 </Table>
     </div>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
         <div style={{ height: "100%", width: '98vw' }}>
-     <Table striped bordered hover size="sm" responsive style={{height:"100%"}}>
+     <Table striped bordered hover size="sm" responsive style={{height:"100%",textAlign:"center"}}>
   <thead>
     <tr>
       <th>#</th>

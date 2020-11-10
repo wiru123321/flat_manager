@@ -4,7 +4,7 @@ import {updateUser} from "../../../features/userSlice/userSlice";
 import { useDispatch } from "react-redux";
 import PaymentsForm from "./PaymentsForm";
 
-const UserPayments = ({user,index,option}) => { 
+const UserPayments = ({user,index,option,dataToSubmit}) => { 
   const dispatch = useDispatch();
     const [userPaymentsState, setUserPaymentsState] = useState({
       rentCost: user.flatsDTO.userAccountDTO.rentCost,
@@ -13,7 +13,7 @@ const UserPayments = ({user,index,option}) => {
       userRentPayment:user.flatsDTO.userAccountDTO.userRentPayment,
       userRubbishPayment:user.flatsDTO.userAccountDTO.userRubbishPayment,
       userWaterCost:user.flatsDTO.userAccountDTO.userWaterCost,
-      paymentDate:user.flatsDTO.userAccountDTO.paymentDate,
+      paymentDate:dataToSubmit,
       userPaymentDate:user.flatsDTO.userAccountDTO.userPaymentDate,
       isActive:user.flatsDTO.userAccountDTO.isActive
     });
@@ -26,7 +26,6 @@ const UserPayments = ({user,index,option}) => {
     };
     const submit = (event) => {
       dispatch(updateUser(user.login,userPaymentsState));
-      console.log("jestem")
     }
 
     const handleRubbishCostCostChange = (event) => {
