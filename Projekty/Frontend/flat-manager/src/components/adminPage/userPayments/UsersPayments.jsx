@@ -100,9 +100,9 @@ const UsersPayments =() => {
       <th>#</th>
       <th>Imie</th>
       <th>Nazwisko</th>
-      <th>Wprowadź opłate za czynsz</th> 
-      <th>Wprowadź opłate za wode</th>
-      <th>Wprowadź opłate za śmieci</th>
+      <th>Zmień opłate za czynsz</th> 
+      <th>Zmień opłate za wode</th>
+      <th>Zmień opłate za śmieci</th>
     </tr>
   </thead>
   <tbody>
@@ -115,16 +115,16 @@ const UsersPayments =() => {
     </div>
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
-        <div style={{ height: "100%", width: '95vw' }}>
+        <div style={{ height: "100%", width: '98vw' }}>
      <Table striped bordered hover size="sm" responsive style={{height:"100%"}}>
   <thead>
     <tr>
       <th>#</th>
       <th>Imie</th>
       <th>Nazwisko</th>
-      <th>Wprowadź opłate za czynsz</th> 
-      <th>Wprowadź opłate za wode</th>
-      <th>Wprowadź opłate za śmieci</th>
+      <th>Potwierdz wpłate za czynsz</th> 
+      <th>Potwierdz wpłate za wode</th>
+      <th>Potwierdz wpłate za śmieci</th>
     </tr>
   </thead>
   <tbody>
