@@ -47,7 +47,6 @@ export const fetchUsers = () => async (dispatch) => {
         },
       });
       dispatch(setUsers(response.data));
-      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -56,6 +55,18 @@ export const fetchUsers = () => async (dispatch) => {
   export const updateUser = (addId, userAccount) => async (dispatch) => {
     try {
       await axios.put(API_URL + `/a/user/${addId}`, userAccount, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      dispatch(fetchUsers());
+    } catch (error) {
+    }
+  };
+
+  export const deleteUser = (login) => async (dispatch) => {
+    try {
+      await axios.delete(API_URL + `/a/user/${login}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
