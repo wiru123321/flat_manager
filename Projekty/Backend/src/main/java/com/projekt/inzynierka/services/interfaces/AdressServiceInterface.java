@@ -8,5 +8,7 @@ public interface AdressServiceInterface {
 
     Adress mapRestModel(Long id, AdressDTO adress);
 
+    void deleteAdress(Adress adress);
+
     Adress getEntityById(Long id);
 }

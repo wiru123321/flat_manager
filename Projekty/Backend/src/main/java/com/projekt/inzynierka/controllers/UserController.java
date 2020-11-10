@@ -66,4 +66,16 @@ public class UserController {
         }
         return ResponseEntity.ok(userService.updateUserInDB(login, userAccount));
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/user/{login}")
+    public ResponseEntity<?> setUserAsDeletedInDB(@PathVariable final String login) {
+        if (!userService.checkIfUserWithLoginExists(login)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no user with passed login.");
+        }
+        Flats flats = userService.getEntityByLogin(login).getFlats();
+        userService.getEntityByLogin(login).setFlats(null);
+        flatsService.deleteFlat(flats);
+
+        return ResponseEntity.ok(userService.setUserIsNotActive(login));
+    }
 }

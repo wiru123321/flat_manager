@@ -31,10 +31,10 @@ public class Flats {
     @Column(nullable = false)
     private Boolean isActive;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Adress adress;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     private UserAccount userAccount;
 
     public Flats(){

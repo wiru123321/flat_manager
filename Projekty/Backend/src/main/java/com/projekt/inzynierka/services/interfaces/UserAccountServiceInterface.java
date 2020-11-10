@@ -8,6 +8,8 @@ public interface UserAccountServiceInterface {
 
     UserAccount mapRestModel(Long id, UserAccountDTO userAccount);
 
+    void deleteUserAcc(UserAccount userAccount);
+
     UserAccount getEntityById(Long id);
 
 }

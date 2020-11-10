@@ -24,6 +24,10 @@ public class UserAccountService implements UserAccountServiceInterface {
         return new UserAccount(id, userAccount.getRentCost(), userAccount.getUserRentPayment(), userAccount.getRentCost(), userAccount.getUserRubbishPayment(),userAccount.getWaterCost(),userAccount.getUserWaterCost(),userAccount.getPaymentDate(),userAccount.getUserPaymentDate(),userAccount.getIsActive());
     }
     @Override
+    public void deleteUserAcc(final UserAccount userAccount) {
+        userAccountRepository.delete(userAccount);
+    }
+    @Override
     public UserAccount getEntityById(final Long id) {
         return userAccountRepository.findById(id).get();
     }

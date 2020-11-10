@@ -8,5 +8,7 @@ public interface FlatsServiceInterface {
 
     Flats mapRestModel(Long id, FlatsDTO flats,Long adressId,Long userAccountId);
 
+    void deleteFlat(Flats flats);
+
     Flats getEntityById(Long id);
 }
