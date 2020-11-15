@@ -47,6 +47,7 @@ export const fetchUsers = () => async (dispatch) => {
         },
       });
       dispatch(setUsers(response.data));
+      console.log(response.data)
     } catch (error) {
       console.log(error);
     }

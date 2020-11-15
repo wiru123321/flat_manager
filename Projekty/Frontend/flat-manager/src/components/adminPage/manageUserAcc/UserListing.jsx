@@ -23,6 +23,10 @@ const [open, setOpen] = React.useState(false);
     setOpen(false);
     window.location.reload(false);
   };
+  const btnHandlerBack = () =>{
+    console.log(info.login)
+    setOpen(false);
+  }
   const handleToggle = () => {
     setOpen(!open);
   };
@@ -36,7 +40,7 @@ const [open, setOpen] = React.useState(false);
         <td>{info.phoneNumber}</td>
         </tr>
         <Backdrop className={classes.backdrop} open={open}>
-        <UserInfoManager btnHandler={handleClose} user={info}/>
+        <UserInfoManager btnHandler={handleClose} user={info} btnHandlerBack={btnHandlerBack}/>
       </Backdrop>
         </>
 
