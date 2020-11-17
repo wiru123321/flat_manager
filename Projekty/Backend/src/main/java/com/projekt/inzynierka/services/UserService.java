@@ -165,13 +165,13 @@ public class UserService implements UserServiceInterface {
     @Override
     public UserDTO getDTOByLogin(final String login) {
         final User user = userRepository.findByLogin(login);
-        return new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()),null);
+        return new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()),new FlatsDTO(user.getFlats()));
     }
 
     @Override
     public UserDTO getDTOByEmail(final String email) {
         final User user = userRepository.findByEmail(email);
-        return new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()),null);
+        return new UserDTO(user, roleService.getDTOByRoleName(user.getRole().getName()),new FlatsDTO(user.getFlats()));
     }
 
     @Override

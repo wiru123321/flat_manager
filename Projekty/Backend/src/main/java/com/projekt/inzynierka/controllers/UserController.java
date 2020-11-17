@@ -20,7 +20,6 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/a")
 public class UserController {
 
     private final UserService userService;
@@ -37,14 +36,20 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/users")
+
+    @RequestMapping(method = RequestMethod.GET, value = "/a/users")
     public ResponseEntity<?> getAllActiveUsersExceptCurrent() {
         final List<UserDTO> userDTOList = userService.getAllActiveUserDTOs();
         userDTOList.remove(userService.getDTOByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));
         return ResponseEntity.ok(userDTOList);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/user")
+    @RequestMapping(method = RequestMethod.GET, value = "/u/getUsers/{login}")
+    public ResponseEntity<?> getUserByLogin(@PathVariable final String login) {
+        return ResponseEntity.ok(userService.getDTOByLogin(SecurityContextHolder.getContext().getAuthentication().getName()));
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/a/user")
     public ResponseEntity<?> addUserToDatabase(@RequestBody final UserCreation userCreation) {
         if (userService.checkIfUserWithLoginExists(userCreation.getLogin())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Existing login given.");
@@ -59,7 +64,7 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(userCreation.getPassword()));
         return ResponseEntity.ok(userService.addEntityToDB(user));
     }
-    @RequestMapping(method = RequestMethod.PUT, value = "/user/{login}")
+    @RequestMapping(method = RequestMethod.PUT, value = "/a/user/{login}")
     public ResponseEntity<?> updateDataBaseUser(@PathVariable final String login, @RequestBody final UserAccount userAccount) {
         if (!userService.checkIfUserWithLoginExists(login)) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no user with passed login.");
@@ -67,7 +72,7 @@ public class UserController {
         return ResponseEntity.ok(userService.updateUserInDB(login, userAccount));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/user/{login}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/a/user/{login}")
     public ResponseEntity<?> setUserAsDeletedInDB(@PathVariable final String login) {
         if (!userService.checkIfUserWithLoginExists(login)) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no user with passed login.");

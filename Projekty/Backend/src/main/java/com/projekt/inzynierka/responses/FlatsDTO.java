@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Optional;
+
 @Data
 @Getter
 @Setter
@@ -19,7 +21,7 @@ public class FlatsDTO {
     private AdressDTO adressDTO;
     private UserAccountDTO userAccountDTO;
 
-    public FlatsDTO() {
+    public FlatsDTO(Optional<Flats> flats) {
 
     }
 
