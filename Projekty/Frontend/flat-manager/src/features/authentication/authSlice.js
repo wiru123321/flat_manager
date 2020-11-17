@@ -48,6 +48,7 @@ export const login = ({ login, password }) => {
       const { token, role } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
+      localStorage.setItem("login", login);
       if (role === "ADMIN") {
         dispatch(setRedirectAddress("/adminPage"));
       } else if (role === "EMPLOYEE") {
@@ -77,6 +78,7 @@ export const logout = () => {
   return (dispatch) => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    localStorage.removeItem("login");
     dispatch(setRedirectAddress("/login"));
     dispatch(allowRedirect(false));
   };

@@ -21,7 +21,7 @@ const UserNavbar = () => {
     <Nav className="mr-auto" style={{fontSize:"25px"}}>
       <Nav.Link href="/userPage">Sprawdz opłaty</Nav.Link>
       <Nav.Link href="/userPage">Zgłoś problem</Nav.Link>
-      <Nav.Link href="/userPage">Twoje mieszkanie</Nav.Link>
+      <Nav.Link href="#/yourFlat">Twoje mieszkanie</Nav.Link>
       <Nav.Link href="/userPage">Zarządzaj mieszkaniem</Nav.Link>
     </Nav>
     <Form inline>

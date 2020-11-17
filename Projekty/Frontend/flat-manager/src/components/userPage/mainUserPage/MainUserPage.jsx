@@ -6,7 +6,7 @@ const MainUserPage = () => {
 
     return (
         <div>
-            <UserNavbar/>
+            <a>Work in progress</a>
         </div>
     );
 };
