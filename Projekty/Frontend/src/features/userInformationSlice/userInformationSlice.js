@@ -4,7 +4,7 @@ import axios from "axios";
 const API_URL = "http://localhost:8080";
 
 const initialState = {
-  userInfo: [],
+  userInfo: "",
 };
 
 export const userInfoSlice = createSlice({
@@ -31,7 +31,7 @@ export const fetchUser = () => async (dispatch) => {
       },
     });
     dispatch(setUserInfo(response.data));
-    console.log(response.data)
+    console.log(response.data.flatsDTO.adressDTO.town)
   } catch (error) {
     console.log(error);
   }

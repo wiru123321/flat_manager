@@ -79,6 +79,7 @@ const UsersPayments = () => {
     dispatch(fetchUsers());
   }, []);
   const users = useSelector(selectUsers);
+  console.log(users)
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
