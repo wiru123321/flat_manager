@@ -41,6 +41,18 @@ public class Flats {
 
     }
 
+    public Flats(FlatsDTO flatsDTO) {
+        this.id = flatsDTO.getId();
+        this.area = flatsDTO.getArea();
+        this.flor = flatsDTO.getFlor();
+        this.peopleInFlat = flatsDTO.getPeopleInFlat();
+        this.rooms = flatsDTO.getRooms();
+        this.isBalcony = flatsDTO.getIsBalcony();
+        this.isActive = flatsDTO.getIsActive();
+        this.adress = flatsDTO.getAdressDTO();
+        this.userAccount = flatsDTO.getUserAccountDTO();
+    }
+
     public Flats(Long id, FlatsDTO flatsDTO, Adress adress,UserAccount userAccount) {
         this.id = id;
         this.area = flatsDTO.getArea();

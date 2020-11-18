@@ -45,8 +45,4 @@ public class FlatsService implements FlatsServiceInterface {
         return flatsRepository.findById(id).get();
     }
 
-
-    public FlatsDTO getDTOById(final Long id) {
-        return new FlatsDTO(flatsRepository.findById(id));
-    }
 }

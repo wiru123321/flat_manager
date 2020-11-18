@@ -11,4 +11,5 @@ public interface FlatsServiceInterface {
     void deleteFlat(Flats flats);
 
     Flats getEntityById(Long id);
+
 }

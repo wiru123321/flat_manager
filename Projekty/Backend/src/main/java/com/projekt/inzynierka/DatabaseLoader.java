@@ -66,9 +66,14 @@ public class DatabaseLoader implements CommandLineRunner {
 
             Long idFlat1 = flatsRepository.save(new Flats(null,55,3,2,3,true,true,adressRepository.findById(id1).get(),userAccountRepository.findById(idAcc1).get())).getId();
 
+            Long id2 = adressRepository.save(new Adress(null,"Katowiceeee","44114","Gae3","8")).getId();
+            Long idAcc2 = userAccountRepository.save(new UserAccount(null,3655,3645,555,20,120,120, LocalDateTime.of(2020, 3, 20, 0, 0),LocalDateTime.of(2020, 3, 20, 0, 0),true)).getId();
+
+            Long idFlat2 = flatsRepository.save(new Flats(null,553,31,22,32,true,true,adressRepository.findById(id2).get(),userAccountRepository.findById(idAcc2).get())).getId();
+
             userRepository.save(new User(null, "admin123", passwordEncoder.encode("apassword123"), "admin@email.com", "Jan", "Kowalski", "513238338", roleRepository.findByName("ADMIN"),flatsRepository.findById(idFlat).get()));
             userRepository.save(new User(null, "1812", passwordEncoder.encode("122"), "admin4@email.com", "Adam", "Adamski", "513238358", roleRepository.findByName("EMPLOYEE"),flatsRepository.findById(idFlat1).get()));
-            userRepository.save(new User(null, "1123", passwordEncoder.encode("1223"), "admin43@email.com", "JanAaa", "KowalskiAaa", "514238358", roleRepository.findByName("EMPLOYEE"),flatsRepository.findById(idFlat1).get()));
+            userRepository.save(new User(null, "1123", passwordEncoder.encode("1223"), "admin43@email.com", "JanAaa", "KowalskiAaa", "514238358", roleRepository.findByName("EMPLOYEE"),flatsRepository.findById(idFlat2).get()));
 
         }
     }

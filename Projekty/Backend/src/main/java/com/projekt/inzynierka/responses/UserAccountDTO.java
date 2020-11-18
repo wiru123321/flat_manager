@@ -22,6 +22,10 @@ public class UserAccountDTO extends UserAccount {
     private LocalDateTime userPaymentDate;
     private Boolean isActive;
 
+
+    public UserAccountDTO() {
+    }
+
     public UserAccountDTO(final UserAccount userAccount) {
         this.id = userAccount.getId();
         this.rentCost = userAccount.getRentCost();

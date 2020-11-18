@@ -15,6 +15,9 @@ public class AdressDTO extends Adress {
     private String street;
     private String number;
 
+    public AdressDTO() {
+    }
+
     public AdressDTO(final Adress adress) {
         this.town = adress.getTown();
         this.postalCode = adress.getPostalCode();

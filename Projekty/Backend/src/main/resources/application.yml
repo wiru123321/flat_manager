@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/zarzadzanie_osiedlem
     username: postgres
-    password: polska525
+    password: admin
     initialization-mode: always
     data: classpath:/data.sql
 server:
