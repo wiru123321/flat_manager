@@ -1,3 +1,4 @@
+
 package com.projekt.inzynierka;
 
 
@@ -11,11 +12,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 @Component
@@ -56,13 +53,9 @@ public class DatabaseLoader implements CommandLineRunner {
     public void run(final String... strings) throws Exception {
 
         if (dataBase.equals("postgres")) {
-            Path path = Paths.get("./DataBase/Roles.txt");
-            List<String> stringList = Files.readAllLines(path);
-            for (final String name : stringList) {
-                roleRepository.save(new Role(null, name));
-            }
-            stringList.clear();
 
+            roleRepository.save(new Role(null, "ADMIN"));
+            roleRepository.save(new Role(null, "EMPLOYEE"));
             Long id = adressRepository.save(new Adress(null,"Kato","Kato","Kato","Kato")).getId();
             Long idAcc = userAccountRepository.save(new UserAccount(null,5,5,5,5,5,5, LocalDateTime.of(2020, 3, 20, 0, 0),LocalDateTime.of(2020, 3, 20, 0, 0),true)).getId();
 
@@ -80,4 +73,5 @@ public class DatabaseLoader implements CommandLineRunner {
         }
     }
 }
+
 
