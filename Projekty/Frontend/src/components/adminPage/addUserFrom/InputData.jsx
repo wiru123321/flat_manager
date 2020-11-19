@@ -11,7 +11,7 @@ const InputData = ({
 }) => {
     return (
         <div style={{ marginBottom: "3vh" }}>
-            <TextValidator id="outlined-basic" label={label} variant="outlined" onChange={onChangeHandler} value={value} validators={['required', { whatIs }]} errorMessages={['this field is required', 'email is not valid']} />
+            <TextField id="outlined-basic" label={label} variant="outlined" onChange={onChangeHandler} value={value} />
         </div>
 
     );

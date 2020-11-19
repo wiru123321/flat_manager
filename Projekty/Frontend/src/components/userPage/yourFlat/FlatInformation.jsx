@@ -1,4 +1,4 @@
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid, Button } from '@material-ui/core';
 import React from 'react';
 import HomeIcon from '@material-ui/icons/Home';
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,13 +13,13 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "23px"
     },
     texts: {
-        fontSize: "20px"
+        fontSize: "19px"
     }
 }));
 const FlatInformation = ({ user, flat }) => {
     const classes = useStyles();
     return (
-        <Container style={{ justifyContent: "center", alignItems: "center", textAlign: "center", marginTop: "5vh", height: "100%" }}>
+        <Container style={{ justifyContent: "center", alignItems: "center", textAlign: "center", marginTop: "4vh", height: "100%" }}>
 
             <Grid container spacing={3}>
                 <Grid item xs={12}>
@@ -50,6 +50,9 @@ const FlatInformation = ({ user, flat }) => {
                     <LocalFloristIcon />
                     <p className={classes.paragraf}>Balkon</p>
                     <a className={classes.texts}>{flat.isBalcony ? <a>Tak</a> : <a>Nie</a>}</a>
+                </Grid>
+                <Grid item xs={12}>
+                    <p> <Button color="primary" variant="contained">Edytuj</Button></p>
                 </Grid>
             </Grid>
 

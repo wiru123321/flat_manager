@@ -1,10 +1,9 @@
-import { Container, Grid } from '@material-ui/core';
+import { Container, Grid, Button } from '@material-ui/core';
 import React from 'react';
 import PlaceIcon from '@material-ui/icons/Place';
 import { makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLocationArrow, faCity, faSortNumericUp, faWindowClose } from '@fortawesome/free-solid-svg-icons'
-
 
 const useStyles = makeStyles((theme) => ({
     paragraf: {
@@ -12,14 +11,19 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "23px"
     },
     texts: {
-        fontSize: "20px"
-    }
+        fontSize: "19px"
+    },
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+        color: '#fff',
+    },
 }));
 
 const AdressInformation = ({ user, flat, adress }) => {
+
     const classes = useStyles();
     return (
-        <Container style={{ justifyContent: "center", alignItems: "center", textAlign: "center", marginTop: "5vh", height: "100%" }}>
+        <Container style={{ justifyContent: "center", alignItems: "center", textAlign: "center", marginTop: "4vh", height: "100%" }}>
 
             <Grid container spacing={3}>
                 <Grid item xs={12}>

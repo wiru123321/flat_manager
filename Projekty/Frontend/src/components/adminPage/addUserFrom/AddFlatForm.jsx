@@ -41,8 +41,6 @@ const AddFlatForm = () => {
     dispatch(setPeopleInFlat(event.target.value));
   const handleRoomsChange = (event) =>
     dispatch(setRooms(event.target.value));
-  const handleIsActiveChange = (event) =>
-    dispatch(setIsActive(event.target.value));
   const handleIsBalconyChange = (event) =>
     dispatch(setIsBalcony(event.target.value));
   const handleStreetChange = (event) =>
