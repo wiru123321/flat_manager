@@ -21,10 +21,11 @@ const UserFlatInformation = ({ user }) => {
 
     const classes = useStyles();
     return (
-        <Container style={{ justifyContent: "center", alignItems: "center", textAlign: "center", marginTop: "5vh", height: "70vh" }}>
+        <Container style={{ justifyContent: "center", alignItems: "center", textAlign: "center", marginTop: "5vh", height: "100%" }}>
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <ContactsIcon style={{ fontSize: 90 }} />
+                    <p className={classes.paragraf}>Dane</p>
                 </Grid>
                 <Grid item xs={12}>
                     <AccountCircleIcon />

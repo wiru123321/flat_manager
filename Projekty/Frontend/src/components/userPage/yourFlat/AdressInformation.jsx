@@ -3,7 +3,7 @@ import React from 'react';
 import PlaceIcon from '@material-ui/icons/Place';
 import { makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationArrow, faCity } from '@fortawesome/free-solid-svg-icons'
+import { faLocationArrow, faCity, faSortNumericUp, faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -16,35 +16,35 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const AdressInformation = ({ user, flat }) => {
+const AdressInformation = ({ user, flat, adress }) => {
     const classes = useStyles();
-    console.log(flat)
-    const {
-        area,
-        flor,
-    } = flat
-
     return (
-        <Container style={{ justifyContent: "center", alignItems: "center", textAlign: "center", marginTop: "5vh", height: "70vh" }}>
+        <Container style={{ justifyContent: "center", alignItems: "center", textAlign: "center", marginTop: "5vh", height: "100%" }}>
 
             <Grid container spacing={3}>
                 <Grid item xs={12}>
                     <PlaceIcon style={{ fontSize: 90 }} />
+                    <p className={classes.paragraf}>Adres</p>
                 </Grid>
                 <Grid item xs={12}>
                     <FontAwesomeIcon icon={faCity} />
-                    <p className={classes.paragraf}>Miasto {area}</p>
-                    <a className={classes.texts}></a>
+                    <p className={classes.paragraf}>Miasto</p>
+                    <a className={classes.texts}>{adress.town}</a>
+                </Grid>
+                <Grid item xs={12}>
+                    <FontAwesomeIcon icon={faWindowClose} />
+                    <p className={classes.paragraf}>Kod pocztowy</p>
+                    <a className={classes.texts}>{adress.postalCode} </a>
                 </Grid>
                 <Grid item xs={12}>
                     <FontAwesomeIcon icon={faLocationArrow} />
-                    <p className={classes.paragraf}>Mail</p>
-                    <a className={classes.texts}>{user.email}</a>
+                    <p className={classes.paragraf}>Ulica</p>
+                    <a className={classes.texts}>{adress.street}</a>
                 </Grid>
                 <Grid item xs={12}>
-                    <FontAwesomeIcon icon={faLocationArrow} />
-                    <p className={classes.paragraf}>Numer Telefonu</p>
-                    <a className={classes.texts}>{user.phoneNumber}</a>
+                    <FontAwesomeIcon icon={faSortNumericUp} />
+                    <p className={classes.paragraf}>Numer</p>
+                    <a className={classes.texts}>{adress.number}</a>
                 </Grid>
             </Grid>
         </Container>
