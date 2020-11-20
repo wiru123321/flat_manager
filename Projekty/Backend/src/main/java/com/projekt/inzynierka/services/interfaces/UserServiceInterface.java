@@ -1,6 +1,7 @@
 package com.projekt.inzynierka.services.interfaces;
 
 
+import com.projekt.inzynierka.model.Flats;
 import com.projekt.inzynierka.model.User;
 import com.projekt.inzynierka.model.UserAccount;
 import com.projekt.inzynierka.responses.User.UserCreation;
@@ -13,6 +14,8 @@ public interface UserServiceInterface {
     Long updateUserInDB(String login);
 
     Long updateUserInDB(String login, UserAccount userAccount);
+
+    Long updateUserInfoInDB(String login, User user);
 
     Long addEntityToDB(User user);
 
@@ -53,5 +56,7 @@ public interface UserServiceInterface {
     List<UserDTO> getAllDTOs();
 
     List<UserDTO> getAllActiveUserDTOs();
+
+    Long updateUserFlatsInfoInDB(String login, Flats flats);
 }
 
