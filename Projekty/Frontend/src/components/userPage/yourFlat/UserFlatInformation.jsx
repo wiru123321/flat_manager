@@ -5,8 +5,9 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import { makeStyles } from '@material-ui/core/styles';
-import EditAdress from "./EditAddress";
-
+import EditUserInfo from "./EditUserInfo";
+import { useDispatch } from "react-redux"
+import { updateUserInfo } from "../../../features/userInformationSlice/userInformationSlice";
 
 
 
@@ -23,12 +24,14 @@ const useStyles = makeStyles((theme) => ({
         color: '#fff',
     },
 }));
-const UserFlatInformation = ({ user }) => {
+const UserFlatInformation = ({ user, handleChange }) => {
+    const dispatch = useDispatch();
 
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
 
     const handleClose = () => {
+        dispatch(updateUserInfo(user));
         setOpen(false);
     };
     const btnHandlerBack = () => {
@@ -66,7 +69,7 @@ const UserFlatInformation = ({ user }) => {
                 </Grid>
             </Container>
             <Backdrop className={classes.backdrop} open={open}>
-                <EditAdress user={user} />
+                <EditUserInfo user={user} handleChange={handleChange} handleClose={handleClose} btnHandlerBack={btnHandlerBack} />
             </Backdrop>
         </>
     );

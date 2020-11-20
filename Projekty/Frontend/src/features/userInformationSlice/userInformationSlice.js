@@ -4,9 +4,9 @@ import axios from "axios";
 const API_URL = "http://localhost:8080";
 
 const initialState = {
-  userInfo: "",
-  flat: "",
-  adress: "",
+  userInfo: [],
+  flat: [],
+  adress: [],
 };
 
 export const userInfoSlice = createSlice({
@@ -45,6 +45,30 @@ export const fetchUser = () => async (dispatch) => {
     console.log(response.data)
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const updateUserInfo = (userInfo) => async (dispatch) => {
+  try {
+    await axios.put(API_URL + "/u/userInfo/" + localStorage.getItem("login"), userInfo, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    dispatch(fetchUser());
+  } catch (error) {
+  }
+};
+
+export const updateUserFlat = (userFlat) => async (dispatch) => {
+  try {
+    await axios.put(API_URL + "/u/userFlat/" + localStorage.getItem("login"), userFlat, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    });
+    dispatch(fetchUser());
+  } catch (error) {
   }
 };
 

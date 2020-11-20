@@ -8,10 +8,11 @@ const InputData = ({
     value,
     label,
     whatIs,
+    name
 }) => {
     return (
         <div style={{ marginBottom: "3vh" }}>
-            <TextField id="outlined-basic" label={label} variant="outlined" onChange={onChangeHandler} value={value} />
+            <TextField id="outlined-basic" label={label} variant="outlined" onChange={onChangeHandler} value={value} name={name} />
         </div>
 
     );
