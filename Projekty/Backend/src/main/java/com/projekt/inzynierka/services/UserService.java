@@ -1,5 +1,6 @@
 package com.projekt.inzynierka.services;
 
+import com.projekt.inzynierka.model.Flats;
 import com.projekt.inzynierka.model.User;
 import com.projekt.inzynierka.model.UserAccount;
 import com.projekt.inzynierka.repositories.UserRepository;
@@ -52,6 +53,26 @@ public class UserService implements UserServiceInterface {
         oldUser.getFlats().getUserAccount().setPaymentDate(userAccount.getPaymentDate());
         oldUser.getFlats().getUserAccount().setUserPaymentDate(userAccount.getUserPaymentDate());
         oldUser.getFlats().getUserAccount().setIsActive(userAccount.getIsActive());
+        return userRepository.save(oldUser).getId();
+    }
+
+    @Override
+    public Long updateUserFlatsInfoInDB(final String login, final Flats flats) {
+        final User oldUser = this.getEntityByLoginAndisActive(login, true);
+        oldUser.getFlats().setArea(flats.getArea());
+        oldUser.getFlats().setFlor(flats.getFlor());
+        oldUser.getFlats().setPeopleInFlat(flats.getPeopleInFlat());
+        oldUser.getFlats().setRooms(flats.getRooms());
+        oldUser.getFlats().setIsBalcony(flats.getIsBalcony());
+        return userRepository.save(oldUser).getId();
+    }
+    @Override
+    public Long updateUserInfoInDB(final String login, final User user) {
+        final User oldUser = this.getEntityByLoginAndisActive(login, true);
+        oldUser.setName(user.getName());
+        oldUser.setSurname(user.getSurname());
+        oldUser.setEmail(user.getEmail());
+        oldUser.setPhoneNumber(user.getPhoneNumber());
         return userRepository.save(oldUser).getId();
     }
 

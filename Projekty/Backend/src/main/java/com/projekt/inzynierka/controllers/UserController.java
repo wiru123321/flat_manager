@@ -72,6 +72,14 @@ public class UserController {
         return ResponseEntity.ok(userService.updateUserInDB(login, userAccount));
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/u/userInfo/{login}")
+    public ResponseEntity<?> updateDataBaseUserInfo(@PathVariable final String login, @RequestBody final User user) {
+        if (!userService.checkIfUserWithLoginExists(login)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no user with passed login.");
+        }
+        return ResponseEntity.ok(userService.updateUserInfoInDB(login, user));
+    }
+
     @RequestMapping(method = RequestMethod.DELETE, value = "/a/user/{login}")
     public ResponseEntity<?> setUserAsDeletedInDB(@PathVariable final String login) {
         if (!userService.checkIfUserWithLoginExists(login)) {
