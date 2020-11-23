@@ -5,7 +5,7 @@ import AdminNavbar from "./adminNavbar/AdminNavbar";
 import UserAccManager from "./userAccManager/UserAccManager";
 import UsersPayments from "./userPayments/UsersPayments";
 import ManagerUserAcc from "./manageUserAcc/ManageUserAcc";
-
+import Annoucements from "./announcements/Announcements";
 
 const AdminPage = () => {
 
@@ -18,6 +18,7 @@ const AdminPage = () => {
           <Route path="/addUserAcc" component={Stepper} />
           <Route path="/usersPayments" component={UsersPayments} />
           <Route path="/managerUserAcc" component={ManagerUserAcc} />
+          <Route path="/annoucements" component={Annoucements} />
           <Route path="/" exact component={UserAccManager} />
         </Switch>
       </HashRouter>

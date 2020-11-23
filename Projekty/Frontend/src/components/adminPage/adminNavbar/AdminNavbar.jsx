@@ -23,7 +23,7 @@ const AdminNavbar = () => {
           <Nav.Link href="#/managerUserAcc">Zarządzaj kontem mieszkańca</Nav.Link>
           <Nav.Link href="#/usersPayments">Płatności mieszkańców</Nav.Link>
           <Nav.Link href="/adminPage">Zarządzaj zgłoszeniami mieszkańców</Nav.Link>
-          <Nav.Link href="/adminPage">Zarządzaj tablicą ogłoszeń</Nav.Link>
+          <Nav.Link href="#/annoucements">Zarządzaj tablicą ogłoszeń</Nav.Link>
         </Nav>
         <Form inline>
           <Button variant="outline-info" onClick={handleLogout} href="/login">Wyloguj</Button>
