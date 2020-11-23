@@ -13,7 +13,7 @@ public class Announcements {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 2000)
     private String adminMessage;
 
     @Column(nullable = false)
@@ -28,7 +28,7 @@ public class Announcements {
     public Announcements() {
     }
 
-    public Announcements(final Long id, final User user_admin, final String adminMessage, final String userMessage,final Boolean isActive,final String title,final LocalDateTime data) {
+    public Announcements(final Long id, final String adminMessage,final Boolean isActive,final String title,final LocalDateTime data) {
         this.id = id;
         this.adminMessage = adminMessage;
         this.isActive = isActive;

@@ -1,33 +1,29 @@
 package com.projekt.inzynierka.responses;
 
-import com.projekt.inzynierka.responses.User.UserDTO;
+import com.projekt.inzynierka.model.Announcements;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDateTime;
 
 @Data
 @Getter
 @Setter
 public class AnnouncementsDTO {
     private Long id;
-    private UserDTO user_adminDTO;
-    private UserDTO userDTO;
+
+
     private String adminMessage;
-    private String userMessage;
+    private Boolean isActive;
+    private String title;
+    private LocalDateTime data;
 
-    public AnnouncementsDTO(final AnnouncementsDTO announcements, final UserDTO user_adminDTO,final UserDTO userDTO) {
+    public AnnouncementsDTO(final Announcements announcements) {
         this.id = announcements.getId();
-        this.user_adminDTO = user_adminDTO;
-        this.userDTO = userDTO;
         this.adminMessage = announcements.getAdminMessage();
-        this.userMessage = announcements.getUserMessage();
-    }
-
-    public AnnouncementsDTO(final Long id, final UserDTO user_adminDTO, final UserDTO userDTO, final String adminMessage, final String userMessage) {
-        this.id = id;
-        this.user_adminDTO = user_adminDTO;
-        this.userDTO = userDTO;
-        this.adminMessage = adminMessage;
-        this.userMessage = userMessage;
+        this.isActive = announcements.getIsActive();
+        this.title = announcements.getTitle();
+        this.data = announcements.getData();
     }
 }
