@@ -28,14 +28,6 @@ const EditFlatInfo = ({ flat, handleChange, handleClose, btnHandlerBack, handleB
                                 label={"Edytuj powierzchnie"}
                             />
                         </Grid>
-                        <Grid item xs={6}>
-                            <InputData
-                                onChangeHandler={handleChange}
-                                name={"flor"}
-                                value={flat.flor}
-                                label={"Edytuj piętro"}
-                            />
-                        </Grid>
                     </Grid>
                     <Grid container
                         direction="row"

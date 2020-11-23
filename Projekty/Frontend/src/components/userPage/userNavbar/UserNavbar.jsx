@@ -19,10 +19,10 @@ const UserNavbar = () => {
           height="70"
           style={{ zIndex: "3" }} /></Navbar.Brand>
         <Nav className="mr-auto" style={{ fontSize: "25px" }}>
-          <Nav.Link href="/userPage">Sprawdz opłaty</Nav.Link>
+          <Nav.Link href="#/checkBills">Sprawdz opłaty</Nav.Link>
           <Nav.Link href="/userPage">Zgłoś problem</Nav.Link>
           <Nav.Link href="#/yourFlat">Twoje mieszkanie</Nav.Link>
-          <Nav.Link href="/userPage">Zarządzaj mieszkaniem</Nav.Link>
+          <Nav.Link href="/userPage">Tablica ogłoszeń</Nav.Link>
         </Nav>
         <Form inline>
           <Button variant="outline-info" onClick={handleLogout} href="/login">Wyloguj</Button>
