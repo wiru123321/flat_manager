@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
-import { Navbar, Nav, Form, FormControl, Button, Image } from "react-bootstrap"
+import { Navbar, Nav, Form, Button, Image } from "react-bootstrap"
 import { logout } from "../../../features/authentication/authSlice";
 import Logo from "../../../resources/logo.png";
 

@@ -1,15 +1,13 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import InputData from "./InputData";
-import { addUser } from "../../../features/authentication/authSlice";
-import { Grid, Select, MenuItem, InputLabel, Button, Paper, Checkbox, FormControlLabel } from '@material-ui/core';
+import { Grid, Paper, Checkbox, FormControlLabel } from '@material-ui/core';
 import {
-  selectAll, setFirstname,
+  selectAll,
   setArea,
   setFlor,
   setPeopleInFlat,
   setRooms,
-  setIsActive,
   setIsBalcony,
   setStreet,
   setNumber,
@@ -26,7 +24,6 @@ const AddFlatForm = () => {
     peopleInFlat,
     rooms,
     isBalcony,
-    isActive,
     town,
     postalCode,
     street,

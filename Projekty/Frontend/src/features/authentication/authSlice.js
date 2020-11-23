@@ -1,8 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { handleLogin } from "../../services/LoginService";
-import axios from "axios";
-
-const API_URL = "http://localhost:8080";
 
 const initialState = {
   success: false,

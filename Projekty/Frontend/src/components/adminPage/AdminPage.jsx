@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch, HashRouter } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import Stepper from "./addUserFrom/Stepper";
 import AdminNavbar from "./adminNavbar/AdminNavbar";
 import UserAccManager from "./userAccManager/UserAccManager";
@@ -9,7 +8,6 @@ import ManagerUserAcc from "./manageUserAcc/ManageUserAcc";
 
 
 const AdminPage = () => {
-  const dispatch = useDispatch();
 
 
   return (

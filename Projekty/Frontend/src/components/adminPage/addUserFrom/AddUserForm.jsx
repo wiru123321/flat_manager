@@ -1,8 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import InputData from "./InputData";
 import { TextValidator } from 'react-material-ui-form-validator';
-import { Grid, Select, MenuItem, InputLabel, Button, Paper } from '@material-ui/core';
+import { Grid, Select, MenuItem, InputLabel, Paper } from '@material-ui/core';
 import {
   selectAll, setFirstname,
   setLastname,

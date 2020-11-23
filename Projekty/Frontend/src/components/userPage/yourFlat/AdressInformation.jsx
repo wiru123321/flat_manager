@@ -1,4 +1,4 @@
-import { Container, Grid, Button } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import React from 'react';
 import PlaceIcon from '@material-ui/icons/Place';
 import { makeStyles } from '@material-ui/core/styles';

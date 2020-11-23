@@ -1,13 +1,8 @@
 import React from 'react';
-import { Grid, Paper, Checkbox, FormControlLabel, Button } from "@material-ui/core";
+import { Grid, Paper, Button } from "@material-ui/core";
 import InputData from "../../adminPage/addUserFrom/InputData";
 
 const EditAddress = ({ user, handleChange, handleClose, btnHandlerBack }) => {
-    const [open, setOpen] = React.useState("tak");
-
-    const handleAreaChange = (event) => {
-        setOpen(event.target.value);
-    }
     return (
         <Grid
             container

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { fetchUser, selectUserInfo, selectFlat, selectAdress } from "../../../features/userInformationSlice/userInformationSlice";
 import { useDispatch, useSelector } from "react-redux"
 import YourFlat from "./YourFlat";
+import { CircularProgress } from "@material-ui/core"
 
 const WrapAllInformation = () => {
 
@@ -14,7 +15,7 @@ const WrapAllInformation = () => {
     }, []);
 
     return (
-        <>{user.name ? <YourFlat user={user} flat={flat} adress={adress} /> : <a>Ładowanie</a>}</>
+        <>{user.name ? <YourFlat user={user} flat={flat} adress={adress} /> : <CircularProgress />}</>
     );
 };
 

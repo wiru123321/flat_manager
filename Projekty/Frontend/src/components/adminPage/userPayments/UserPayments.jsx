@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Table, Form, Col } from "react-bootstrap";
+import React, { useState } from 'react';
 import { updateUser } from "../../../features/userSlice/userSlice";
 import { useDispatch } from "react-redux";
 import PaymentsForm from "./PaymentsForm";

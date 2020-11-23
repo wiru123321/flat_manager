@@ -3,11 +3,6 @@ import { Grid, Paper, Checkbox, FormControlLabel, Button } from "@material-ui/co
 import InputData from "../../adminPage/addUserFrom/InputData";
 
 const EditFlatInfo = ({ flat, handleChange, handleClose, btnHandlerBack, handleBalconyChange }) => {
-    const [open, setOpen] = React.useState("tak");
-
-    const handleAreaChange = (event) => {
-        setOpen(event.target.value);
-    }
     return (
         <Grid
             container
