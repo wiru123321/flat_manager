@@ -9,6 +9,7 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import AddAnnouncements from "./AddAnnouncements";
+import ShowAllAnnounncements from "./ShowAllAnnouncements"
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -97,7 +98,7 @@ const Announcements = () => {
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
                     <div style={{ height: "100%", width: '98vw' }}>
-                        <p>hello 2</p>
+                        <ShowAllAnnounncements />
                     </div>
                 </TabPanel>
             </SwipeableViews>
