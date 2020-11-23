@@ -3,6 +3,7 @@ package com.projekt.inzynierka.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Table(name = "announcements")
@@ -12,29 +13,26 @@ public class Announcements {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    private User user_admin;
-
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    private User user;
-
     @Column(nullable = false)
     private String adminMessage;
 
     @Column(nullable = false)
-    private String userMessage;
+    private Boolean isActive;
 
+    @Column(nullable = false)
+    private String title;
 
-
+    @Column(nullable = false)
+    private LocalDateTime data;
 
     public Announcements() {
     }
 
-    public Announcements(final Long id, final User user_admin,final User user,final String adminMessage,final String userMessage) {
+    public Announcements(final Long id, final User user_admin, final String adminMessage, final String userMessage,final Boolean isActive,final String title,final LocalDateTime data) {
         this.id = id;
-        this.user_admin = user_admin;
-        this.user = user;
         this.adminMessage = adminMessage;
-        this.userMessage = userMessage;
+        this.isActive = isActive;
+        this.title = title;
+        this.data = data;
     }
 }
