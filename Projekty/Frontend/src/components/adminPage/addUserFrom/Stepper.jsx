@@ -179,13 +179,12 @@ export default function CustomizedSteppers() {
       }
     };
     console.log(user);
-    //dispatch(addUser(user));
   }
 
   const handleNext = () => {
     if ((activeStep) !== 2)
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    if ((activeStep) == 2) {
+    if ((activeStep) === 2) {
       let user = {
         email: email,
         login: login,
@@ -291,7 +290,7 @@ export default function CustomizedSteppers() {
                     {activeStep === steps.length - 1 ? 'Zakończ' : 'Następna strona'}
                   </Button>
                   {
-                    onError ? <a>Wypełnij wszystkie pola</a> : null
+                    onError ? <p>Wypełnij wszystkie pola</p> : null
                   }
                 </div>
               </ValidatorForm>

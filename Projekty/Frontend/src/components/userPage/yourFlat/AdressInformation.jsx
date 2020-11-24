@@ -33,22 +33,22 @@ const AdressInformation = ({ user, flat, adress }) => {
                 <Grid item xs={12}>
                     <FontAwesomeIcon icon={faCity} />
                     <p className={classes.paragraf}>Miasto</p>
-                    <a className={classes.texts}>{adress.town}</a>
+                    <p className={classes.texts}>{adress.town}</p>
                 </Grid>
                 <Grid item xs={12}>
                     <FontAwesomeIcon icon={faWindowClose} />
                     <p className={classes.paragraf}>Kod pocztowy</p>
-                    <a className={classes.texts}>{adress.postalCode} </a>
+                    <ap className={classes.texts}>{adress.postalCode} </ap>
                 </Grid>
                 <Grid item xs={12}>
                     <FontAwesomeIcon icon={faLocationArrow} />
                     <p className={classes.paragraf}>Ulica</p>
-                    <a className={classes.texts}>{adress.street}</a>
+                    <p className={classes.texts}>{adress.street}</p>
                 </Grid>
                 <Grid item xs={12}>
                     <FontAwesomeIcon icon={faSortNumericUp} />
                     <p className={classes.paragraf}>Numer</p>
-                    <a className={classes.texts}>{adress.number}</a>
+                    <p className={classes.texts}>{adress.number}</p>
                 </Grid>
             </Grid>
         </Container>

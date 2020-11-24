@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Paper } from "@material-ui/core";
+import { Container, Grid } from "@material-ui/core";
 
 const Bill = ({ name, value }) => {
     return (

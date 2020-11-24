@@ -3,7 +3,7 @@ import React from 'react';
 const UserAccManager = () => {
     return (
         <div>
-            <a>Work in progress</a>
+            <p>Work in progress</p>
         </div>
     );
 };

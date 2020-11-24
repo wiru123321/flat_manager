@@ -14,9 +14,9 @@ const LoginPage = () => {
         <Container col height="100vh" width="100vw">
           <Header />
           <Container row height="100vh" width="100vw">
-            <a style={{ color: "white", fontSize: "27px", textAlign: "center", lineHeight: "45px", width: "45vw" }}>Witaj w systemie umożliwiającym zarządzanie twoim mieszkaniem.<br />
+            <p style={{ color: "white", fontSize: "27px", textAlign: "center", lineHeight: "45px", width: "45vw" }}>Witaj w systemie umożliwiającym zarządzanie twoim mieszkaniem.<br />
           Dzięki systemowi będziesz mógł załatwiac sprawy związane z twoim mieszkaniem bez wychodzenia z domu.
-          </a>
+          </p>
             <Login />
           </Container>
         </Container>

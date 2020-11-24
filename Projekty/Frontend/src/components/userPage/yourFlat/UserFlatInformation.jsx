@@ -51,17 +51,17 @@ const UserFlatInformation = ({ user, handleChange }) => {
                     <Grid item xs={12}>
                         <AccountCircleIcon />
                         <p className={classes.paragraf}>Imie i Nazwisko</p>
-                        <a className={classes.texts}>{user.name} {user.surname}</a>
+                        <p className={classes.texts}>{user.name} {user.surname}</p>
                     </Grid>
                     <Grid item xs={12}>
                         <EmailIcon />
                         <p className={classes.paragraf}>Mail</p>
-                        <a className={classes.texts}>{user.email}</a>
+                        <p className={classes.texts}>{user.email}</p>
                     </Grid>
                     <Grid item xs={12}>
                         <PhoneIcon />
                         <p className={classes.paragraf}>Numer Telefonu</p>
-                        <a className={classes.texts}>{user.phoneNumber}</a>
+                        <p className={classes.texts}>{user.phoneNumber}</p>
                     </Grid>
                     <Grid item xs={12}>
                         <p> <Button color="primary" variant="contained" onClick={handleToggle}>Edytuj</Button></p>

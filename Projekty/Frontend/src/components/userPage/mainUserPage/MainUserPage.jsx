@@ -1,12 +1,10 @@
 import React from 'react';
-import UserNavbar from "../userNavbar/UserNavbar";
-
 
 const MainUserPage = () => {
 
     return (
         <div>
-            <a>Work in progress</a>
+            <p>Work in progress</p>
         </div>
     );
 };

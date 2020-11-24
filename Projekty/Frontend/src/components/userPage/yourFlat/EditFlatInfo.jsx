@@ -69,18 +69,18 @@ const EditFlatInfo = ({ flat, handleChange, handleClose, btnHandlerBack, handleB
                         alignItems="center"
                         style={{ width: "27vw" }}>
                         <Grid item xs={6} style={{ textAlign: "center" }}>
-                            <a>
+                            <p>
                                 <Button onClick={handleClose} variant="contained" color="primary" >
                                     Zatwierdź
                                 </Button>
-                            </a>
+                            </p>
                         </Grid>
                         <Grid item xs={6} style={{ textAlign: "center" }}>
-                            <a>
+                            <p>
                                 <Button onClick={btnHandlerBack} variant="contained" color="secondary">
                                     Powrót
                                 </Button>
-                            </a>
+                            </p>
                         </Grid>
                     </Grid>
                 </Grid>

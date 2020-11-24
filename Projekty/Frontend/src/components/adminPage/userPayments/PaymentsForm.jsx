@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Form, Col, InputGroup, FormControl } from "react-bootstrap";
+import { Form, Col, InputGroup, FormControl } from "react-bootstrap";
 import ErrorIcon from '@material-ui/icons/Error';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { Button } from "@material-ui/core";
@@ -22,7 +22,7 @@ const PaymentsForm = ({ onPointerLeave, user, handleRentCostChange, handleRubbis
                   <InputGroup.Text>zł</InputGroup.Text>
                 </InputGroup.Prepend>
               </InputGroup> : <>
-                  {user.rentCost == user.userRentPayment ?
+                  {user.rentCost === user.userRentPayment ?
                     <><Col><CheckCircleIcon style={{ color: "green" }} /> Opłata:{user.rentCost}zł</Col><Col>Wpłacono:{user.userRentPayment}zł</Col></>
                     : <><Col><ErrorIcon style={{ color: "red" }} /> Opłata:{user.rentCost}zł</Col><Col>Wpłacono:{user.userRentPayment}zł</Col></>
                   }
@@ -41,7 +41,7 @@ const PaymentsForm = ({ onPointerLeave, user, handleRentCostChange, handleRubbis
                 </InputGroup.Prepend>
               </InputGroup> :
                 <>
-                  {user.waterCost == user.userWaterCost ?
+                  {user.waterCost === user.userWaterCost ?
                     <><Col><CheckCircleIcon style={{ color: "green" }} /> Opłata:{user.waterCost}zł</Col><Col>Wpłacono:{user.userWaterCost}zł</Col></>
                     : <><Col><ErrorIcon style={{ color: "red" }} /> Opłata:{user.waterCost} zł</Col><Col>Wpłacono:{user.userWaterCost}zł</Col></>
                   }
@@ -61,7 +61,7 @@ const PaymentsForm = ({ onPointerLeave, user, handleRentCostChange, handleRubbis
                 </InputGroup.Prepend>
               </InputGroup> :
                 <>
-                  {user.rubbishCost == user.userRubbishPayment ?
+                  {user.rubbishCost === user.userRubbishPayment ?
                     <><Col><CheckCircleIcon style={{ color: "green" }} /> Opłata:{user.rubbishCost}zł</Col><Col>Wpłacono:{user.userRubbishPayment}zł</Col></>
                     : <><Col><ErrorIcon style={{ color: "red" }} /> Opłata:{user.rubbishCost}zł</Col><Col>Wpłacono:{user.userRubbishPayment}zł</Col></>
                   }

@@ -51,27 +51,27 @@ const FlatInformation = ({ user, flat, handleFlatChange, handleBalconyChange }) 
                     <Grid item xs={12}>
                         <SpaceBarIcon />
                         <p className={classes.paragraf} style={{ marginBottom: "1vh" }}>Powierzchnia</p>
-                        <a className={classes.texts}>{flat.area} m<sup>2</sup></a>
+                        <p className={classes.texts}>{flat.area} m<sup>2</sup></p>
                     </Grid>
                     <Grid item xs={12}>
                         <FontAwesomeIcon icon={faBuilding} />
                         <p className={classes.paragraf}>Piętro</p>
-                        <a className={classes.texts}>{flat.flor}</a>
+                        <p className={classes.texts}>{flat.flor}</p>
                     </Grid>
                     <Grid item xs={12}>
                         <FontAwesomeIcon icon={faPersonBooth} />
                         <p className={classes.paragraf}>Ilość pokoi</p>
-                        <a className={classes.texts}>{flat.rooms}</a>
+                        <p className={classes.texts}>{flat.rooms}</p>
                     </Grid>
                     <Grid item xs={12}>
                         <FontAwesomeIcon icon={faPeopleArrows} />
                         <p className={classes.paragraf}>Mieszkańcy</p>
-                        <a className={classes.texts}>{flat.peopleInFlat}</a>
+                        <p className={classes.texts}>{flat.peopleInFlat}</p>
                     </Grid>
                     <Grid item xs={12}>
                         <LocalFloristIcon />
                         <p className={classes.paragraf}>Balkon</p>
-                        <a className={classes.texts}>{flat.isBalcony ? <a>Tak</a> : <a>Nie</a>}</a>
+                        <p className={classes.texts}>{flat.isBalcony ? <p>Tak</p> : <p>Nie</p>}</p>
                     </Grid>
                     <Grid item xs={12}>
                         <p> <Button color="primary" variant="contained" onClick={handleToggle}>Edytuj</Button></p>

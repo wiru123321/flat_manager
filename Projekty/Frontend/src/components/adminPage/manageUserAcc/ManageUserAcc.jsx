@@ -11,13 +11,10 @@ const ManageUserAcc = () => {
     dispatch(fetchUsers());
   }, []);
   const users = useSelector(selectUsers);
-  const onClickHandler = (event) => {
-    console.log(event.targer.value)
-  }
   return (
     <div style={{ textAlign: "center" }}>
       <div style={{ marginTop: "3vh" }}>
-        <a style={{ fontSize: "25px", fontWeight: "bold" }}>Wybierz które konto chcesz usunąć</a>
+        <p style={{ fontSize: "25px", fontWeight: "bold" }}>Wybierz które konto chcesz usunąć</p>
       </div>
       <Table striped bordered hover size="sm" style={{ marginTop: "3vh" }}>
         <thead>
