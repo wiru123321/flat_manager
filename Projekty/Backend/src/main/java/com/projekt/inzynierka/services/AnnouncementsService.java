@@ -38,18 +38,18 @@ public class AnnouncementsService implements com.projekt.inzynierka.services.int
     }
 
     @Override
-    public Boolean checkIfAnnouncementWithAdminMessageExists(final String adminMessage) {
-        return announcementsRepository.existsByAdminMessage(adminMessage);
+    public Boolean checkIfAnnouncementWithIndexExists(final Integer index) {
+        return announcementsRepository.existsByIndex(index);
     }
 
     @Override
-    public Announcements getEntityByAnnouncementId(final String adminMessage) {
-        return announcementsRepository.findByAdminMessage(adminMessage);
+    public Announcements getEntityByIndex(final Integer index) {
+        return announcementsRepository.findByIndex(index);
     }
 
     @Override
-    public Long setAnnouncementsIsNotActive(final String adminMessage) {
-        final Announcements announcements = this.getEntityByAnnouncementId(adminMessage);
+    public Long setAnnouncementsIsNotActive(final Integer index) {
+        final Announcements announcements = this.getEntityByIndex(index);
         announcements.setIsActive(false);
         return announcementsRepository.save(announcements).getId();
     }

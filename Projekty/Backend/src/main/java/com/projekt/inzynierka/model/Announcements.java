@@ -17,6 +17,9 @@ public class Announcements {
     private String adminMessage;
 
     @Column(nullable = false)
+    private Integer index;
+
+    @Column(nullable = false)
     private Boolean isActive;
 
     @Column(nullable = false)
@@ -28,11 +31,12 @@ public class Announcements {
     public Announcements() {
     }
 
-    public Announcements(final Long id, final String adminMessage,final Boolean isActive,final String title,final LocalDateTime data) {
+    public Announcements(final Long id, final String adminMessage,final Boolean isActive,final String title,final LocalDateTime data,Integer index) {
         this.id = id;
         this.adminMessage = adminMessage;
         this.isActive = isActive;
         this.title = title;
         this.data = data;
+        this.index = index;
     }
 }

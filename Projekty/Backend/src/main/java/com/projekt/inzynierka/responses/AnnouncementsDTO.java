@@ -12,9 +12,8 @@ import java.time.LocalDateTime;
 @Setter
 public class AnnouncementsDTO {
     private Long id;
-
-
     private String adminMessage;
+    private Integer index;
     private Boolean isActive;
     private String title;
     private LocalDateTime data;
@@ -25,5 +24,6 @@ public class AnnouncementsDTO {
         this.isActive = announcements.getIsActive();
         this.title = announcements.getTitle();
         this.data = announcements.getData();
+        this.index = announcements.getIndex();
     }
 }

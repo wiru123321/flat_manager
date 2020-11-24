@@ -11,8 +11,7 @@ public interface AnnouncementsRepository extends CrudRepository<Announcements, L
 
     List<Announcements> findAllByIsActive(Boolean isActive);
 
-    Boolean existsByAdminMessage(String adminMessage);
+    Announcements findByIndex(Integer index);
 
-    Announcements findByAdminMessage(String adminMessage);
-
+    Boolean existsByIndex(Integer index);
 }

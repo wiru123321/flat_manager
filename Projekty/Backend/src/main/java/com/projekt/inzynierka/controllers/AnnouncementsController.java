@@ -25,18 +25,18 @@ public class AnnouncementsController {
         return ResponseEntity.ok(announcementsService.addEntityToDB(announcements));
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/a/announcement")
+    @RequestMapping(method = RequestMethod.GET, value = "/e/announcement")
     public ResponseEntity<?> getAllActiveAnnouncement() {
         final List<AnnouncementsDTO> announcementDTOList = announcementsService.getAllActiveAnnouncementsDTOs();
         return ResponseEntity.ok(announcementDTOList);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/a/deleteAnnouncement/{adminMessage}")
-    public ResponseEntity<?> setUserAsDeletedInDB(@PathVariable final String adminMessage) {
-        if (!announcementsService.checkIfAnnouncementWithAdminMessageExists(adminMessage)) {
+    @RequestMapping(method = RequestMethod.DELETE, value = "/a/deleteAnnouncement/{index}")
+    public ResponseEntity<?> setUserAsDeletedInDB(@PathVariable final Integer index) {
+        if (!announcementsService.checkIfAnnouncementWithIndexExists(index)) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no announcement with passed announcementId.");
         }
 
-        return ResponseEntity.ok(announcementsService.setAnnouncementsIsNotActive(adminMessage));
+        return ResponseEntity.ok(announcementsService.setAnnouncementsIsNotActive(index));
     }
 }

@@ -10,9 +10,9 @@ public interface AnnouncementsSeviceInterface {
 
     List<AnnouncementsDTO> getAllActiveAnnouncementsDTOs();
 
-    Boolean checkIfAnnouncementWithAdminMessageExists(String adminMessage);
+    Boolean checkIfAnnouncementWithIndexExists(Integer Index);
 
-    Announcements getEntityByAnnouncementId(String adminMessage);
+    Announcements getEntityByIndex(Integer Index);
 
-    Long setAnnouncementsIsNotActive(String adminMessage);
+    Long setAnnouncementsIsNotActive(Integer Index);
 }
