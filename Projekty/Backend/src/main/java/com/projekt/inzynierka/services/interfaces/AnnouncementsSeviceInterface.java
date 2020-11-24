@@ -9,4 +9,10 @@ public interface AnnouncementsSeviceInterface {
     Long addEntityToDB(Announcements announcements);
 
     List<AnnouncementsDTO> getAllActiveAnnouncementsDTOs();
+
+    Boolean checkIfAnnouncementWithAdminMessageExists(String adminMessage);
+
+    Announcements getEntityByAnnouncementId(String adminMessage);
+
+    Long setAnnouncementsIsNotActive(String adminMessage);
 }

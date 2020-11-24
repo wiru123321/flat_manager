@@ -27,6 +27,7 @@ public class AnnouncementsService implements com.projekt.inzynierka.services.int
         return this.mapRestList(announcementsArrayList);
     }
 
+
     private List<AnnouncementsDTO> mapRestList(final List<Announcements> announcementsArrayList) {
         final ArrayList<AnnouncementsDTO> announcementsDTOArrayList = new ArrayList<>();
         announcementsArrayList.forEach((announcements) -> {
@@ -34,5 +35,22 @@ public class AnnouncementsService implements com.projekt.inzynierka.services.int
             announcementsDTOArrayList.add(announcementsDTO);
         });
         return announcementsDTOArrayList;
+    }
+
+    @Override
+    public Boolean checkIfAnnouncementWithAdminMessageExists(final String adminMessage) {
+        return announcementsRepository.existsByAdminMessage(adminMessage);
+    }
+
+    @Override
+    public Announcements getEntityByAnnouncementId(final String adminMessage) {
+        return announcementsRepository.findByAdminMessage(adminMessage);
+    }
+
+    @Override
+    public Long setAnnouncementsIsNotActive(final String adminMessage) {
+        final Announcements announcements = this.getEntityByAnnouncementId(adminMessage);
+        announcements.setIsActive(false);
+        return announcementsRepository.save(announcements).getId();
     }
 }

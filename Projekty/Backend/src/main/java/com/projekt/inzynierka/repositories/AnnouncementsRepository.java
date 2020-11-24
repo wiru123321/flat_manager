@@ -10,4 +10,9 @@ import java.util.List;
 public interface AnnouncementsRepository extends CrudRepository<Announcements, Long> {
 
     List<Announcements> findAllByIsActive(Boolean isActive);
+
+    Boolean existsByAdminMessage(String adminMessage);
+
+    Announcements findByAdminMessage(String adminMessage);
+
 }

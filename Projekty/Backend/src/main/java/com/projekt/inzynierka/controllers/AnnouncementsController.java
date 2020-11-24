@@ -3,6 +3,7 @@ package com.projekt.inzynierka.controllers;
 import com.projekt.inzynierka.model.Announcements;
 import com.projekt.inzynierka.responses.AnnouncementsDTO;
 import com.projekt.inzynierka.services.AnnouncementsService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,14 @@ public class AnnouncementsController {
     public ResponseEntity<?> getAllActiveAnnouncement() {
         final List<AnnouncementsDTO> announcementDTOList = announcementsService.getAllActiveAnnouncementsDTOs();
         return ResponseEntity.ok(announcementDTOList);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/a/deleteAnnouncement/{adminMessage}")
+    public ResponseEntity<?> setUserAsDeletedInDB(@PathVariable final String adminMessage) {
+        if (!announcementsService.checkIfAnnouncementWithAdminMessageExists(adminMessage)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no announcement with passed announcementId.");
+        }
+
+        return ResponseEntity.ok(announcementsService.setAnnouncementsIsNotActive(adminMessage));
     }
 }
