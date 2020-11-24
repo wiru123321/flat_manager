@@ -37,7 +37,7 @@ export const addAnnoncement = (announcement) => async (dispatch) => {
 
 export const fetchAnnouncements = () => async (dispatch) => {
     try {
-        const response = await axios.get(API_URL + "/a/announcement", {
+        const response = await axios.get(API_URL + "/e/announcement", {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },
@@ -45,6 +45,18 @@ export const fetchAnnouncements = () => async (dispatch) => {
         dispatch(setAnnouncements(response.data));
     } catch (error) {
         console.log(error);
+    }
+};
+
+export const deleteAnnouncement = (index) => async (dispatch) => {
+    try {
+        await axios.delete(API_URL + `/a/deleteAnnouncement/${index}`, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        });
+        dispatch(fetchAnnouncements());
+    } catch (error) {
     }
 };
 

@@ -22,7 +22,7 @@ const UserNavbar = () => {
           <Nav.Link href="#/checkBills">Sprawdz opłaty</Nav.Link>
           <Nav.Link href="/userPage">Zgłoś problem</Nav.Link>
           <Nav.Link href="#/yourFlat">Twoje mieszkanie</Nav.Link>
-          <Nav.Link href="/userPage">Tablica ogłoszeń</Nav.Link>
+          <Nav.Link href="#/userAnnouncements">Tablica ogłoszeń</Nav.Link>
         </Nav>
         <Form inline>
           <Button variant="outline-info" onClick={handleLogout} href="/login">Wyloguj</Button>

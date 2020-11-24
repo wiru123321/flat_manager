@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchAnnouncements, selectAnnouncement } from "../../../features/announcementsSlice/announcementsSlice";
 import ShowAllAnnouncement from "./ShowAnnouncement";
 
-const ShowAllAnnouncements = () => {
+const ShowAllAnnouncements = ({ ifUser }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -17,7 +17,7 @@ const ShowAllAnnouncements = () => {
                 {
                     announcements.map((announcement, index) => <>
                         <Grid item xs={4} key={index}>
-                            <ShowAllAnnouncement title={announcement.title} content={announcement.adminMessage} data={announcement.data} />
+                            <ShowAllAnnouncement title={announcement.title} content={announcement.adminMessage} data={announcement.data} index={announcement.index} ifUser={ifUser} />
                         </Grid> </>)
                 }
 

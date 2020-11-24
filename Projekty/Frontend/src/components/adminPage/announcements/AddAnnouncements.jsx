@@ -1,5 +1,5 @@
 import { Container, TextareaAutosize, Grid, Button, TextField } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import { addAnnoncement } from "../../../features/announcementsSlice/announcementsSlice";
 
@@ -9,12 +9,22 @@ const AddAnnouncements = () => {
     const currentMonth = (now.getMonth() + 1).toString();
     const currentDay = (now.getDate()).toString();
     const year = now.getFullYear();
+    useEffect(() => {
+        setAnnouncementState({
+            ...announcementState,
+            index: getRandomInt(1000000),
+        });
+    }, [])
+    function getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
     const dataToSubmit = year + "-" + currentMonth + "-" + currentDay + "T00:00:01";
     const [announcementState, setAnnouncementState] = useState({
         adminMessage: "",
         isActive: true,
         title: "",
         data: dataToSubmit,
+        index: ""
     });
 
     const handleChange = (event) => {
@@ -23,8 +33,7 @@ const AddAnnouncements = () => {
             [event.target.name]: event.target.value,
         });
     };
-
-    const handleClick = () => {
+    const handleClick = (event) => {
         console.log(announcementState)
         dispatch(addAnnoncement(announcementState));
     };

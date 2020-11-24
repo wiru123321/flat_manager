@@ -8,6 +8,9 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
+import DeleteIcon from '@material-ui/icons/Delete';
+import { useDispatch } from "react-redux";
+import { deleteAnnouncement } from "../../../features/announcementsSlice/announcementsSlice";
 
 const useStyles = makeStyles({
     root: {
@@ -15,10 +18,14 @@ const useStyles = makeStyles({
     },
 });
 
-const ShowAnnouncement = ({ title, content, data }) => {
+const ShowAnnouncement = ({ title, content, data, index, ifUser }) => {
+    const dispatch = useDispatch();
     const classes = useStyles();
     console.log(data)
     const newData = data.split("T", 1);
+    const handleClick = () => {
+        dispatch(deleteAnnouncement(index));
+    }
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -36,13 +43,18 @@ const ShowAnnouncement = ({ title, content, data }) => {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary">
-                    Share
-        </Button>
-                <Button size="small" color="primary">
-                    Learn More
-        </Button>
-
+                {
+                    ifUser ? null : <Button
+                        variant="contained"
+                        color="secondary"
+                        size="small"
+                        className={classes.button}
+                        startIcon={<DeleteIcon />}
+                        onClick={handleClick}
+                    >
+                        Delete
+      </Button>
+                }
             </CardActions>
         </Card>
     );

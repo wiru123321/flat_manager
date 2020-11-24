@@ -63,14 +63,6 @@ const Announcements = () => {
     const handleChangeIndex = (index) => {
         setValue(index);
     };
-
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        //dispatch(fetchUsers());
-    }, []);
-    //const users = useSelector(selectUsers);
-    //console.log(users)
     return (
         <div className={classes.root}>
             <AppBar position="static" color="default">
@@ -98,7 +90,7 @@ const Announcements = () => {
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
                     <div style={{ height: "100%", width: '98vw' }}>
-                        <ShowAllAnnounncements />
+                        <ShowAllAnnounncements ifUser={false} />
                     </div>
                 </TabPanel>
             </SwipeableViews>

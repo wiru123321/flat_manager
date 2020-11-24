@@ -5,6 +5,7 @@ import WrapAllInformation from "./yourFlat/WrapAllInformation";
 import UserNavbar from "./userNavbar/UserNavbar";
 import { Container } from "@material-ui/core";
 import CheckBills from "./checkBills/CheckBills";
+import UserAnnouncements from "./userAnnouncements/UserAnnouncements";
 
 const UserPage = () => {
   return (
@@ -16,6 +17,7 @@ const UserPage = () => {
             <Route path="/" exact component={MainUserPage} />
             <Route path="/yourFlat" component={WrapAllInformation} />
             <Route path="/checkBills" component={CheckBills} />
+            <Route path="/userAnnouncements" component={UserAnnouncements} />
           </Switch>
         </HashRouter>
       </Container>
