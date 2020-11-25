@@ -71,7 +71,7 @@ const FlatInformation = ({ user, flat, handleFlatChange, handleBalconyChange }) 
                     <Grid item xs={12}>
                         <LocalFloristIcon />
                         <p className={classes.paragraf}>Balkon</p>
-                        <p className={classes.texts}>{flat.isBalcony ? <p>Tak</p> : <p>Nie</p>}</p>
+                        <p className={classes.texts}>{flat.isBalcony ? <span>Tak</span> : <span>Nie</span>}</p>
                     </Grid>
                     <Grid item xs={12}>
                         <p> <Button color="primary" variant="contained" onClick={handleToggle}>Edytuj</Button></p>

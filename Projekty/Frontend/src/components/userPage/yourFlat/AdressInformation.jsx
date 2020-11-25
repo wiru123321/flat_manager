@@ -38,7 +38,7 @@ const AdressInformation = ({ user, flat, adress }) => {
                 <Grid item xs={12}>
                     <FontAwesomeIcon icon={faWindowClose} />
                     <p className={classes.paragraf}>Kod pocztowy</p>
-                    <ap className={classes.texts}>{adress.postalCode} </ap>
+                    <p className={classes.texts}>{adress.postalCode} </p>
                 </Grid>
                 <Grid item xs={12}>
                     <FontAwesomeIcon icon={faLocationArrow} />
