@@ -1,7 +1,7 @@
 import { Container, TextareaAutosize, Grid, Button, TextField } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
-import { addFault, fetchActiveFaults } from "../../../features/userFaultsSlice/userFaultSlice";
+import { addFault, fetchActiveFaultsByLogin } from "../../../features/userFaultsSlice/userFaultSlice";
 
 const AddUserFault = () => {
     const dispatch = useDispatch();
@@ -10,6 +10,10 @@ const AddUserFault = () => {
         isActive: true,
         title: "",
     });
+
+    useEffect(() => {
+        dispatch(fetchActiveFaultsByLogin(localStorage.getItem("login")))
+    }, [])
 
     const handleChange = (event) => {
         setFaultState({
@@ -20,7 +24,7 @@ const AddUserFault = () => {
     const handleClick = (event) => {
         console.log(faultState)
         dispatch(addFault(faultState));
-        dispatch(fetchActiveFaults())
+        dispatch(fetchActiveFaultsByLogin(localStorage.getItem("login")))
         setFaultState({
             ...faultState,
             describe: "",

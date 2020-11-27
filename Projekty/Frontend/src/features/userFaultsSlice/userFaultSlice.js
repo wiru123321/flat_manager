@@ -23,6 +23,7 @@ export const {
 
 export const selectActiveFaults = (state) => state.userFaults.ActiveFaults;
 
+
 export const addFault = (userFault) => async (dispatch) => {
     try {
         await axios.post(API_URL + "/u/addFault/" + localStorage.getItem("login"), userFault, {
@@ -35,9 +36,22 @@ export const addFault = (userFault) => async (dispatch) => {
     }
 };
 
+export const fetchActiveFaultsByLogin = (login) => async (dispatch) => {
+    try {
+        const response = await axios.get(API_URL + "/e/getActiveFaults/" + login, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        });
+        dispatch(setActiveFaults(response.data));
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 export const fetchActiveFaults = () => async (dispatch) => {
     try {
-        const response = await axios.get(API_URL + "/e/getActiveFaults/" + localStorage.getItem("login"), {
+        const response = await axios.get(API_URL + "/e/getActiveFaults", {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },

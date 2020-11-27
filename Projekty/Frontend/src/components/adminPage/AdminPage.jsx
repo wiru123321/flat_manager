@@ -6,6 +6,7 @@ import UserAccManager from "./userAccManager/UserAccManager";
 import UsersPayments from "./userPayments/UsersPayments";
 import ManagerUserAcc from "./manageUserAcc/ManageUserAcc";
 import Annoucements from "./announcements/Announcements";
+import MainManage from "./menageUserFaults/MainManage";
 
 const AdminPage = () => {
 
@@ -19,6 +20,7 @@ const AdminPage = () => {
           <Route path="/usersPayments" component={UsersPayments} />
           <Route path="/managerUserAcc" component={ManagerUserAcc} />
           <Route path="/annoucements" component={Annoucements} />
+          <Route path="/manageUserFaults" component={MainManage} />
           <Route path="/" exact component={UserAccManager} />
         </Switch>
       </HashRouter>
