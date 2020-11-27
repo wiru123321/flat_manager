@@ -2,6 +2,7 @@ package com.projekt.inzynierka.controllers;
 
 import com.projekt.inzynierka.model.Faults;
 import com.projekt.inzynierka.model.Flats;
+import com.projekt.inzynierka.repositories.FaultsRepository;
 import com.projekt.inzynierka.responses.FaultsDTO;
 import com.projekt.inzynierka.services.FaultsService;
 import com.projekt.inzynierka.services.UserService;
@@ -17,11 +18,13 @@ public class FaultsController {
 
     private final FaultsService faultsService;
     private final UserService userService;
+    private final FaultsRepository faultsRepository;
 
     @Autowired
-    public FaultsController(FaultsService faultsService, UserService userService) {
+    public FaultsController(FaultsService faultsService, UserService userService, FaultsRepository faultsRepository) {
         this.faultsService = faultsService;
         this.userService = userService;
+        this.faultsRepository = faultsRepository;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/u/addFault/{login}")
@@ -32,9 +35,15 @@ public class FaultsController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/e/getActiveFaults/{login}")
-    public ResponseEntity<?> getAllActiveFaults(@PathVariable final String login) {
+    public ResponseEntity<?> getActiveFaults(@PathVariable final String login) {
         final Long flat_id = userService.getEntityByLogin(login).getFlats().getId();
-        final List<FaultsDTO> faultsDTOList = faultsService.getAllActiveFaultsDTOs(flat_id);
+        final List<FaultsDTO> faultsDTOList = faultsService.getActiveFaultsDTOs(flat_id);
         return ResponseEntity.ok(faultsDTOList);
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/e/getActiveFaults")
+    public ResponseEntity getAllActiveFaults() {
+        return ResponseEntity.ok(faultsService.getAllActiveFaultsDTOs());
+    }
+
 }

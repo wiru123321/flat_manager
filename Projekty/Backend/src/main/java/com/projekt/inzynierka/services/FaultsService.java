@@ -34,9 +34,14 @@ public class FaultsService implements FaultsSeviceInterface {
         return new Faults(id, faults, flatsService.getEntityById(flatsId));
     }
 
-    public List<FaultsDTO> getAllActiveFaultsDTOs(Long id) {
+    public List<FaultsDTO> getActiveFaultsDTOs(Long id) {
         final ArrayList<Faults> faultsArrayList = new ArrayList<>(faultsRepository.findByIsActiveAndAndFlats_Id(true,id));
         return this.mapRestList(faultsArrayList,flatsService.getEntityById(id));
+    }
+
+    public List<FaultsDTO> getAllActiveFaultsDTOs() {
+        final ArrayList<Faults> faultsArrayList = new ArrayList<>(faultsRepository.findAllByIsActive(true));
+        return this.mapEntityList(faultsArrayList);
     }
 
     private List<FaultsDTO> mapRestList(final List<Faults> faultsArrayList, final Flats flats) {
@@ -47,5 +52,15 @@ public class FaultsService implements FaultsSeviceInterface {
             faultsDTOArrayList.add(faultsDTO);
         });
         return faultsDTOArrayList;
+    }
+
+    private List<FaultsDTO> mapEntityList(final List<Faults> faultsList) {
+        final ArrayList<FaultsDTO> faultsDTOList = new ArrayList<>();
+        faultsList.forEach((fault) -> {
+            final FlatsDTO flatsDTO = new FlatsDTO(fault.getFlats());
+            final FaultsDTO faultDTO = new FaultsDTO(fault, flatsDTO);
+            faultsDTOList.add(faultDTO);
+        });
+        return faultsDTOList;
     }
 }

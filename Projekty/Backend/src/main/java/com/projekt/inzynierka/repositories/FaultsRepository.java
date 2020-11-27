@@ -11,4 +11,6 @@ public interface FaultsRepository extends CrudRepository<Faults, Long> {
 
     List<Faults> findByIsActiveAndAndFlats_Id(Boolean active, Long id);
 
+    List<Faults> findAllByIsActive(Boolean isActive);
+
 }
