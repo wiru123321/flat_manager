@@ -4,6 +4,7 @@ import addUserReducer from "../features/addUserSlice/addUserSlice.js";
 import userReducer from "../features/userSlice/userSlice";
 import userInfoReducer from "../features/userInformationSlice/userInformationSlice";
 import announcementsReducer from "../features/announcementsSlice/announcementsSlice";
+import userFaultsReducer from "../features/userFaultsSlice/userFaultSlice";
 
 export default configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
     user: userReducer,
     userInfo: userInfoReducer,
     announcements: announcementsReducer,
+    userFaults: userFaultsReducer,
   },
 });
