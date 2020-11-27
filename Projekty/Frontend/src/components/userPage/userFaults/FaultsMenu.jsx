@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Announcements = () => {
+const FaultsMenu = () => {
     const classes = useStyles();
     const dispatch = useDispatch();
     const theme = useTheme();
@@ -124,4 +124,4 @@ const Announcements = () => {
     );
 }
 
-export default Announcements;
+export default FaultsMenu;
