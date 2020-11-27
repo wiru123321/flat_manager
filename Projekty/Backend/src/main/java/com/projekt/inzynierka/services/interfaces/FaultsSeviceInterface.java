@@ -1,0 +1,9 @@
+package com.projekt.inzynierka.services.interfaces;
+
+import com.projekt.inzynierka.model.Faults;
+
+public interface FaultsSeviceInterface {
+    Long addEntityToDB(Faults faults);
+
+    Faults mapCreationModel(Long id, Faults faults, Long flatsId);
+}

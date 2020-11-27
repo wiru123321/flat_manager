@@ -19,6 +19,9 @@ public class Faults {
     private String describe;
 
     @Column(nullable = false)
+    private String title;
+
+    @Column(nullable = false)
     private Boolean isActive;
 
 
@@ -27,10 +30,19 @@ public class Faults {
     public Faults() {
     }
 
-    public Faults(final Long id,final Flats flats,final String describe,final Boolean isActive) {
+    public Faults(final Long id,final Flats flats,final String describe,final String title,final Boolean isActive) {
         this.id = id;
         this.flats = flats;
         this.describe = describe;
+        this.title = title;
         this.isActive = isActive;
+    }
+
+    public Faults(final Long id,final Faults faults, final Flats flats) {
+        this.id = id;
+        this.flats = flats;
+        this.describe = faults.getDescribe();
+        this.title = faults.getTitle();
+        this.isActive = faults.getIsActive();
     }
 }

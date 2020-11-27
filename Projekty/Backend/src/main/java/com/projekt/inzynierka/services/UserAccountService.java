@@ -4,12 +4,14 @@ import com.projekt.inzynierka.model.UserAccount;
 import com.projekt.inzynierka.repositories.UserAccountRepository;
 import com.projekt.inzynierka.responses.UserAccountDTO;
 import com.projekt.inzynierka.services.interfaces.UserAccountServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserAccountService implements UserAccountServiceInterface {
     private final UserAccountRepository userAccountRepository;
 
+    @Autowired
     public UserAccountService(final UserAccountRepository userAccountRepository) {
         this.userAccountRepository = userAccountRepository;
     }

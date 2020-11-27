@@ -12,6 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserDTO {
+    private Long id;
     private String login;
     private String email;
     private String name;
@@ -21,6 +22,7 @@ public class UserDTO {
     private RoleDTO roleDTO;
 
     public UserDTO(final User user, final RoleDTO roleDTO,final FlatsDTO flatsDTO) {
+        this.id = user.getId();
         this.login = user.getLogin();
         this.email = user.getEmail();
         this.name = user.getName();
@@ -30,7 +32,8 @@ public class UserDTO {
         this.roleDTO = roleDTO;
     }
 
-    public UserDTO(final String login, final String email, final String name, final String surname, final String phoneNumber, final RoleDTO roleDTO,final FlatsDTO flatsDTO) {
+    public UserDTO(final Long id,final String login, final String email, final String name, final String surname, final String phoneNumber, final RoleDTO roleDTO,final FlatsDTO flatsDTO) {
+        this.id = id;
         this.login = login;
         this.email = email;
         this.name = name;

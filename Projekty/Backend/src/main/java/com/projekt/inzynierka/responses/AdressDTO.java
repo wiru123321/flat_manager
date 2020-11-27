@@ -19,6 +19,7 @@ public class AdressDTO extends Adress {
     }
 
     public AdressDTO(final Adress adress) {
+        this.id = adress.getId();
         this.town = adress.getTown();
         this.postalCode = adress.getPostalCode();
         this.street = adress.getStreet();

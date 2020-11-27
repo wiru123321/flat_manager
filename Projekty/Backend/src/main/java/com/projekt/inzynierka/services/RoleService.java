@@ -5,6 +5,7 @@ import com.projekt.inzynierka.model.Role;
 import com.projekt.inzynierka.repositories.RoleRepository;
 import com.projekt.inzynierka.responses.RoleDTO;
 import com.projekt.inzynierka.services.interfaces.RoleServiceInterface;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class RoleService implements RoleServiceInterface {
 
     private final RoleRepository roleRepository;
 
+    @Autowired
     public RoleService(final RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }

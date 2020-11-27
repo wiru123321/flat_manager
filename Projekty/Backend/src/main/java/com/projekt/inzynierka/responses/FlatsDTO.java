@@ -24,6 +24,7 @@ public class FlatsDTO {
     }
 
     public FlatsDTO(final Flats flats) {
+        this.id = flats.getId();
         this.area = flats.getArea();
         this.flor = flats.getFlor();
         this.peopleInFlat = flats.getPeopleInFlat();
@@ -35,6 +36,7 @@ public class FlatsDTO {
     }
 
     public FlatsDTO(final Flats flats, final AdressDTO adressDTO, final UserAccountDTO userAccountDTO) {
+        this.id = flats.getId();
         this.area = flats.getArea();
         this.flor = flats.getFlor();
         this.peopleInFlat = flats.getPeopleInFlat();

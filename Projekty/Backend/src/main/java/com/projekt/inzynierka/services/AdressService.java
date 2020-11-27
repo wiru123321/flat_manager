@@ -3,12 +3,14 @@ package com.projekt.inzynierka.services;
 import com.projekt.inzynierka.model.Adress;
 import com.projekt.inzynierka.repositories.AdressRepository;
 import com.projekt.inzynierka.responses.AdressDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AdressService implements com.projekt.inzynierka.services.interfaces.AdressServiceInterface {
     private final AdressRepository adressRepository;
 
+    @Autowired
     public AdressService(final AdressRepository adressRepository) {
         this.adressRepository = adressRepository;
     }

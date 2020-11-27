@@ -64,6 +64,7 @@ public class UserService implements UserServiceInterface {
         oldUser.getFlats().setPeopleInFlat(flats.getPeopleInFlat());
         oldUser.getFlats().setRooms(flats.getRooms());
         oldUser.getFlats().setIsBalcony(flats.getIsBalcony());
+        oldUser.getFlats().setId(flats.getId());
         return userRepository.save(oldUser).getId();
     }
     @Override
@@ -73,6 +74,7 @@ public class UserService implements UserServiceInterface {
         oldUser.setSurname(user.getSurname());
         oldUser.setEmail(user.getEmail());
         oldUser.setPhoneNumber(user.getPhoneNumber());
+        oldUser.setId(user.getId());
         return userRepository.save(oldUser).getId();
     }
 

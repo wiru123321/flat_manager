@@ -3,6 +3,7 @@ package com.projekt.inzynierka.services;
 import com.projekt.inzynierka.model.Announcements;
 import com.projekt.inzynierka.repositories.AnnouncementsRepository;
 import com.projekt.inzynierka.responses.AnnouncementsDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.List;
 public class AnnouncementsService implements com.projekt.inzynierka.services.interfaces.AnnouncementsSeviceInterface {
     private final AnnouncementsRepository announcementsRepository;
 
+    @Autowired
     public AnnouncementsService(final AnnouncementsRepository announcementsRepository) {
         this.announcementsRepository = announcementsRepository;
     }
