@@ -42,18 +42,19 @@ const ShowAnnouncement = ({ title, content, data, index, ifUser }) => {
                     </Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions>
+            <CardActions style={{ justifyContent: 'center', alignContent: "center" }}>
                 {
-                    ifUser ? null : <Button
-                        variant="contained"
-                        color="secondary"
-                        size="small"
-                        className={classes.button}
-                        startIcon={<DeleteIcon />}
-                        onClick={handleClick}
-                    >
-                        Delete
-      </Button>
+                    ifUser ? null :
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            size="small"
+                            className={classes.button}
+                            startIcon={<DeleteIcon />}
+                            onClick={handleClick}
+                        >
+                            Delete
+                        </Button>
                 }
             </CardActions>
         </Card>
