@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react';
 import Backdrop from '@material-ui/core/Backdrop';
 import { makeStyles } from '@material-ui/core/styles';
-//import UserInfoManager from "./UserInfoManager";
 import { useDispatch, useSelector } from "react-redux"
 import { deleteUser } from "../../../features/userSlice/userSlice";
 import { selectActiveFaults, fetchActiveFaults } from "../../../features/userFaultsSlice/userFaultSlice";
-
+import ListFaults from "./ListFaults";
 const useStyles = makeStyles((theme) => ({
     backdrop: {
         zIndex: theme.zIndex.drawer + 1,
@@ -50,20 +49,17 @@ const UserListingFaults = ({ info, index }) => {
     };
     return (
         <>
-            {
-                faults.length ? <> <tr style={{ width: "100%" }}>
-                    <td style={{ width: "3%" }}>{index + 1}</td>
-                    <td>{info.name}</td>
-                    <td>{info.surname}</td>
-                    <td>{info.email} </td>
-                    <td>{info.phoneNumber}</td>
-                    <td>{getNumberOf()}</td>
-                </tr>  </> : null
-            }
-
-            {/* <Backdrop className={classes.backdrop} open={open}>
-        <UserInfoManager btnHandler={handleClose} user={info} btnHandlerBack={btnHandlerBack} />
-      </Backdrop> */}
+            <tr style={{ width: "100%" }} onClick={handleToggle}>
+                <td style={{ width: "3%" }}>{index + 1}</td>
+                <td>{info.name}</td>
+                <td>{info.surname}</td>
+                <td>{info.email} </td>
+                <td>{info.phoneNumber}</td>
+                <td>{getNumberOf()}</td>
+            </tr>
+            <Backdrop className={classes.backdrop} open={open}>
+                <ListFaults user={info} faults={faults} btnHandlerBack={btnHandlerBack} />
+            </Backdrop>
         </>
 
     );
