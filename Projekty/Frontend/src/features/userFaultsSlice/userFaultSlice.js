@@ -93,5 +93,16 @@ export const updateUserFault = (id, faults) => async (dispatch) => {
     }
 };
 
+export const deleteUserFault = (id) => async (dispatch) => {
+    try {
+        await axios.delete(API_URL + "/u/deleteUserFault/" + id, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        });
+    } catch (error) {
+    }
+};
+
 
 export default userFaultsSlice.reducer;

@@ -9,8 +9,7 @@ import {
 } from "@material-ui/core"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useDispatch } from "react-redux"
-import { makeStyles, createMuiTheme } from '@material-ui/core/styles';
-import { blue, green, } from '@material-ui/core/colors';
+import { makeStyles } from '@material-ui/core/styles';
 import { updateUserFault } from "../../../features/userFaultsSlice/userFaultSlice";
 
 const useStyles = makeStyles((theme) => ({
@@ -26,12 +25,6 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const theme = createMuiTheme({
-    palette: {
-        primary: green,
-        secondary: blue,
-    },
-});
 
 const ListFaults = ({ user, faults, btnHandlerBack }) => {
     const classes = useStyles();
@@ -54,19 +47,16 @@ const ListFaults = ({ user, faults, btnHandlerBack }) => {
                         </AccordionSummary>
                         <AccordionDetails style={{ alignItems: 'center', justifyContent: "center" }}>
                             <Typography>
-                                <a>{fault.describe}<br />
-                                    <ThemeProvider theme={theme}>
-                                        <Button variant="contained" color="primary" className={classes.margin} onClick={() => toggleButton(fault)}>
-                                            Theme Provider
-        </Button>
-                                    </ThemeProvider></a>
+                                {fault.describe}<br />
+                                <Button variant="contained" color="primary" className={classes.margin} onClick={() => toggleButton(fault)}>
+                                    Ustaw jako rozwiązane.
+                                    </Button>
+
                             </Typography>
                         </AccordionDetails>
                     </Accordion> : null
             }</>)}
-            <ThemeProvider theme={theme}>
-                <Button onClick={btnHandlerBack} variant="contained" color="secondary" style={{ marginTop: "2vh" }}>Powrót</Button>
-            </ThemeProvider>
+            <Button onClick={btnHandlerBack} variant="contained" color="secondary" style={{ marginTop: "2vh" }}>Powrót</Button>
         </Paper>
     );
 };

@@ -9,6 +9,8 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import AnnouncementIcon from '@material-ui/icons/Announcement';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { deleteUserFault } from "../../../features/userFaultsSlice/userFaultSlice";
+import { useDispatch } from "react-redux";
 
 const useStyles = makeStyles({
     root: {
@@ -17,7 +19,12 @@ const useStyles = makeStyles({
 });
 
 const ShowFaults = ({ faults, showBtn }) => {
+    const dispatch = useDispatch();
     const classes = useStyles();
+    const btnHandler = (id) => {
+        dispatch(deleteUserFault(id));
+        window.location.reload(false);
+    }
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -40,6 +47,7 @@ const ShowFaults = ({ faults, showBtn }) => {
                     size="small"
                     className={classes.button}
                     startIcon={<DeleteIcon />}
+                    onClick={() => btnHandler(faults.id)}
                 >
                     Delete
                         </Button> : null}
