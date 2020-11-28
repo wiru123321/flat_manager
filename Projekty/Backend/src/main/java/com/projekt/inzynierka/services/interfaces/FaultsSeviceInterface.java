@@ -10,4 +10,6 @@ public interface FaultsSeviceInterface {
     Boolean checkIfFaultWithIdExists(Long id);
 
     Long updateUserFaultInDB(Long id, Faults userFault) throws Exception;
+
+    void deleteUserFault(Long id) throws Exception;
 }

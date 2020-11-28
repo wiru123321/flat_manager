@@ -81,4 +81,10 @@ public class FaultsService implements FaultsSeviceInterface {
         final ArrayList<Faults> faultsArrayList = new ArrayList<>(faultsRepository.findAllByIsActive(false));
         return this.mapEntityList(faultsArrayList);
     }
+
+    @Override
+    public void deleteUserFault(final Long id) throws Exception {
+        final Faults faults = faultsRepository.findById(id).orElseThrow(()->new Exception("Nie znaleziono"));
+        faultsRepository.delete(faults);
+    }
 }

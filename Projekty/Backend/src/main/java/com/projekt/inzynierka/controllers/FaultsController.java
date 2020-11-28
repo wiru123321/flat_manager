@@ -60,4 +60,13 @@ public class FaultsController {
         }
         return ResponseEntity.ok(faultsService.updateUserFaultInDB(id,userFault));
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/u/deleteUserFault/{id}")
+    public ResponseEntity<?> setUserFaultAsDeletedInDB(@PathVariable final Long id) throws Exception {
+        if (!faultsService.checkIfFaultWithIdExists(id)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no fault with passed id.");
+        }
+        faultsService.deleteUserFault(id);
+        return ResponseEntity.ok("Object was deleted");
+    }
 }

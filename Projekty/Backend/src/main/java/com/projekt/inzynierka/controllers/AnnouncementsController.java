@@ -32,7 +32,7 @@ public class AnnouncementsController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/a/deleteAnnouncement/{index}")
-    public ResponseEntity<?> setUserAsDeletedInDB(@PathVariable final Integer index) {
+    public ResponseEntity<?> setAnnouncementAsDeletedInDB(@PathVariable final Integer index) {
         if (!announcementsService.checkIfAnnouncementWithIndexExists(index)) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no announcement with passed announcementId.");
         }
