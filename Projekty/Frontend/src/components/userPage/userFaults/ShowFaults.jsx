@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     },
 });
 
-const ShowFaults = ({ faults }) => {
+const ShowFaults = ({ faults, showBtn }) => {
     const classes = useStyles();
     return (
         <Card className={classes.root}>
@@ -34,7 +34,7 @@ const ShowFaults = ({ faults }) => {
                 </CardContent>
             </CardActionArea>
             <CardActions style={{ justifyContent: 'center', alignContent: "center" }}>
-                <Button
+                {showBtn ? <Button
                     variant="contained"
                     color="secondary"
                     size="small"
@@ -42,7 +42,8 @@ const ShowFaults = ({ faults }) => {
                     startIcon={<DeleteIcon />}
                 >
                     Delete
-                        </Button>
+                        </Button> : null}
+
             </CardActions>
         </Card>
     );

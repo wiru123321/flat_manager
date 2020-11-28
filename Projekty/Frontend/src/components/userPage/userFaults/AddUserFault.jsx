@@ -30,6 +30,7 @@ const AddUserFault = () => {
             describe: "",
             title: "",
         });
+        window.location.reload(false);
     };
 
     return (

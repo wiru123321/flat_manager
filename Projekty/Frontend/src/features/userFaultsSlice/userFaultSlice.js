@@ -5,6 +5,7 @@ const API_URL = "http://localhost:8080";
 
 const initialState = {
     ActiveFaults: [],
+    DisActiveFaults: [],
 };
 
 export const userFaultsSlice = createSlice({
@@ -14,14 +15,20 @@ export const userFaultsSlice = createSlice({
         setActiveFaults: (state, action) => {
             state.ActiveFaults = action.payload;
         },
+
+        setDisActiveFaults: (state, action) => {
+            state.DisActiveFaults = action.payload;
+        },
     }
 });
 
 export const {
     setActiveFaults,
+    setDisActiveFaults
 } = userFaultsSlice.actions;
 
 export const selectActiveFaults = (state) => state.userFaults.ActiveFaults;
+export const selectDisActiveFaults = (state) => state.userFaults.DisActiveFaults;
 
 
 export const addFault = (userFault) => async (dispatch) => {
@@ -59,6 +66,30 @@ export const fetchActiveFaults = () => async (dispatch) => {
         dispatch(setActiveFaults(response.data));
     } catch (error) {
         console.log(error);
+    }
+};
+
+export const fetchDisActiveFaults = () => async (dispatch) => {
+    try {
+        const response = await axios.get(API_URL + "/e/getDisActiveFaults", {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        });
+        dispatch(setDisActiveFaults(response.data));
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export const updateUserFault = (id, faults) => async (dispatch) => {
+    try {
+        await axios.put(API_URL + "/a/disactivateUserFault/" + id, faults, {
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        });
+    } catch (error) {
     }
 };
 

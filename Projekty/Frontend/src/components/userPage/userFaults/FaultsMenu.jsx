@@ -11,7 +11,7 @@ import AddUserFault from "./AddUserFault";
 import Grid from "@material-ui/core/Grid"
 import Container from "@material-ui/core/Container"
 import { useDispatch, useSelector } from "react-redux";
-import { fetchActiveFaults, selectActiveFaults } from "../../../features/userFaultsSlice/userFaultSlice";
+import { fetchActiveFaults, selectActiveFaults, fetchDisActiveFaults, selectDisActiveFaults } from "../../../features/userFaultsSlice/userFaultSlice";
 import ShowFaults from "./ShowFaults";
 
 function TabPanel(props) {
@@ -62,10 +62,10 @@ const FaultsMenu = () => {
 
     useEffect(() => {
         dispatch(fetchActiveFaults())
+        dispatch(fetchDisActiveFaults())
     }, [])
     const ActiveFaults = useSelector(selectActiveFaults);
-
-    console.log(ActiveFaults);
+    const DisActiveFaults = useSelector(selectDisActiveFaults);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -107,7 +107,7 @@ const FaultsMenu = () => {
                                 ActiveFaults.map((ActiveFault, index) =>
                                     <>
                                         <Grid item xs={4} key={index}>
-                                            <ShowFaults faults={ActiveFault} />
+                                            <ShowFaults faults={ActiveFault} showBtn={true} />
                                         </Grid>
                                     </>)
                             }
@@ -115,9 +115,18 @@ const FaultsMenu = () => {
                     </Container>
                 </TabPanel>
                 <TabPanel value={value} index={2} dir={theme.direction}>
-                    <div style={{ height: "100%", width: '100%' }}>
-                        <AddUserFault faults={ActiveFaults} />
-                    </div>
+                    <Container style={{ justifyContent: "center", alignItems: "center", textAlign: "center", marginTop: "4vh", height: "100%" }}>
+                        <Grid container spacing={3}>
+                            {
+                                DisActiveFaults.map((DisActiveFault, index) =>
+                                    <>
+                                        <Grid item xs={4} key={index}>
+                                            <ShowFaults faults={DisActiveFault} showBtn={false} />
+                                        </Grid>
+                                    </>)
+                            }
+                        </Grid>
+                    </Container>
                 </TabPanel>
             </SwipeableViews>
         </div>
