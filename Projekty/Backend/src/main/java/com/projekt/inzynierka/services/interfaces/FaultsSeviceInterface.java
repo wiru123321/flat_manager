@@ -6,4 +6,8 @@ public interface FaultsSeviceInterface {
     Long addEntityToDB(Faults faults);
 
     Faults mapCreationModel(Long id, Faults faults, Long flatsId);
+
+    Boolean checkIfFaultWithIdExists(Long id);
+
+    Long updateUserFaultInDB(Long id, Faults userFault) throws Exception;
 }

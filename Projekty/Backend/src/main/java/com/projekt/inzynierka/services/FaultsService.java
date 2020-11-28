@@ -63,4 +63,22 @@ public class FaultsService implements FaultsSeviceInterface {
         });
         return faultsDTOList;
     }
+
+    @Override
+    public Boolean checkIfFaultWithIdExists(final Long id) {
+        return faultsRepository.existsById(id);
+    }
+
+
+    @Override
+    public Long updateUserFaultInDB(final Long id, final Faults userFault) throws Exception {
+        final Faults faults = faultsRepository.findById(id).orElseThrow(()->new Exception("Nie znaleziono"));
+        faults.setIsActive(false);
+        return faultsRepository.save(faults).getId();
+    }
+
+    public List<FaultsDTO> getAllDisActiveFaultsDTOs() {
+        final ArrayList<Faults> faultsArrayList = new ArrayList<>(faultsRepository.findAllByIsActive(false));
+        return this.mapEntityList(faultsArrayList);
+    }
 }

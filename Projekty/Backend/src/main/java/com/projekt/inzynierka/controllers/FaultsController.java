@@ -7,6 +7,7 @@ import com.projekt.inzynierka.responses.FaultsDTO;
 import com.projekt.inzynierka.services.FaultsService;
 import com.projekt.inzynierka.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,4 +47,17 @@ public class FaultsController {
         return ResponseEntity.ok(faultsService.getAllActiveFaultsDTOs());
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/e/getDisActiveFaults")
+    public ResponseEntity getAllDisActiveFaults() {
+        return ResponseEntity.ok(faultsService.getAllDisActiveFaultsDTOs());
+    }
+
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/a/disactivateUserFault/{id}")
+    public ResponseEntity<?> updateDataBaseFaults(@PathVariable final Long id,@RequestBody final Faults userFault) throws Exception {
+        if (!faultsService.checkIfFaultWithIdExists(id)) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no fault with passed id.");
+        }
+        return ResponseEntity.ok(faultsService.updateUserFaultInDB(id,userFault));
+    }
 }
