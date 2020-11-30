@@ -16,4 +16,6 @@ public interface FaultsRepository extends CrudRepository<Faults, Long> {
 
     Optional<Faults> findById(Long id);
 
+    List<Faults> findAllByFlats(Long id);
+
 }

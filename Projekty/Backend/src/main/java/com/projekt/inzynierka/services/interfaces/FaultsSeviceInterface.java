@@ -12,4 +12,5 @@ public interface FaultsSeviceInterface {
     Long updateUserFaultInDB(Long id, Faults userFault) throws Exception;
 
     void deleteUserFault(Long id) throws Exception;
+
 }

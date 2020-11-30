@@ -85,10 +85,6 @@ public class UserController {
         if (!userService.checkIfUserWithLoginExists(login)) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("There is no user with passed login.");
         }
-        Flats flats = userService.getEntityByLogin(login).getFlats();
-        userService.getEntityByLogin(login).setFlats(null);
-        flatsService.deleteFlat(flats);
-
         return ResponseEntity.ok(userService.setUserIsNotActive(login));
     }
 }

@@ -7,7 +7,6 @@ import com.projekt.inzynierka.repositories.UserRepository;
 import com.projekt.inzynierka.responses.FlatsDTO;
 import com.projekt.inzynierka.responses.User.UserCreation;
 import com.projekt.inzynierka.responses.User.UserDTO;
-//import com.projekt.inzynierka.responses.User.UserUpdate;
 import com.projekt.inzynierka.services.interfaces.UserServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,6 +17,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+//import com.projekt.inzynierka.responses.User.UserUpdate;
+
 
 @Service
 public class UserService implements UserServiceInterface {
@@ -26,13 +27,15 @@ public class UserService implements UserServiceInterface {
     final RoleService roleService;
     final FlatsService flatsService;
     final PasswordEncoder bCryptPasswordEncoder;
+    final FaultsService faultsService;
 
     @Autowired
-    public UserService(final UserRepository userRepository, final RoleService roleService, FlatsService flatsService, final PasswordEncoder bCryptPasswordEncoder) {
+    public UserService(final UserRepository userRepository, final RoleService roleService, FlatsService flatsService, final PasswordEncoder bCryptPasswordEncoder, FaultsService faultsService) {
         this.userRepository = userRepository;
         this.roleService = roleService;
         this.flatsService = flatsService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
+        this.faultsService = faultsService;
     }
 
 
@@ -95,6 +98,9 @@ public class UserService implements UserServiceInterface {
 
     @Override
     public Long setUserIsNotActive(final String login) {
+//        final Flats flats = this.getEntityByLogin(login).getFlats();
+//        this.getEntityByLogin(login).setFlats(null);
+//        flatsService.deleteFlat(flats);
         final User user = this.getEntityByLogin(login);
         user.setIsActive(false);
         return userRepository.save(user).getId();
