@@ -23,7 +23,9 @@ public class DatabaseLoader implements CommandLineRunner {
     private final FlatsRepository flatsRepository;
     private final AdressRepository adressRepository;
     private final UserAccountRepository userAccountRepository;
-
+    private final AnnouncementsRepository announcementsRepository;
+    private final FaultsRepository faultsRepository
+;
     
     private final RoleService roleService;
     private final UserService userService;
@@ -37,12 +39,14 @@ public class DatabaseLoader implements CommandLineRunner {
     @Autowired
     public DatabaseLoader(
             final RoleRepository roleRepository, final UserRepository userRepository,
-            FlatsRepository flatsRepository, AdressRepository adressRepository, UserAccountRepository userAccountRepository, final RoleService roleService, final UserService userService) {
+            FlatsRepository flatsRepository, AdressRepository adressRepository, UserAccountRepository userAccountRepository, AnnouncementsRepository announcementsRepository, FaultsRepository faultsRepository, final RoleService roleService, final UserService userService) {
         this.roleRepository = roleRepository;
         this.userRepository = userRepository;
         this.flatsRepository = flatsRepository;
         this.adressRepository = adressRepository;
         this.userAccountRepository = userAccountRepository;
+        this.announcementsRepository = announcementsRepository;
+        this.faultsRepository = faultsRepository;
 
 
         this.roleService = roleService;
@@ -70,6 +74,16 @@ public class DatabaseLoader implements CommandLineRunner {
             Long idAcc2 = userAccountRepository.save(new UserAccount(null,3655,3645,555,20,120,120, LocalDateTime.of(2020, 3, 20, 0, 0),LocalDateTime.of(2020, 3, 20, 0, 0),true)).getId();
 
             Long idFlat2 = flatsRepository.save(new Flats(null,553,31,22,32,true,true,adressRepository.findById(id2).get(),userAccountRepository.findById(idAcc2).get())).getId();
+
+            announcementsRepository.save((new Announcements(null,"Nowa wiadomość 1",true,"Nowa 1",LocalDateTime.of(2020, 11, 28, 0, 0),105674)));
+            announcementsRepository.save((new Announcements(null,"Nowa wiadomość 2",true,"Nowa 2",LocalDateTime.of(2020, 11, 28, 0, 0),105346)));
+            announcementsRepository.save((new Announcements(null,"Nowa wiadomość 3",true,"Nowa 3",LocalDateTime.of(2020, 11, 29, 0, 0),105342)));
+            announcementsRepository.save((new Announcements(null,"Nowa wiadomość 4",true,"Nowa 4",LocalDateTime.of(2020, 11, 30, 0, 0),101114)));
+
+            faultsRepository.save(new Faults(null,flatsRepository.findById(idFlat1).get(),"Coś poszło żle 1","Tytuł 1",true));
+            faultsRepository.save(new Faults(null,flatsRepository.findById(idFlat1).get(),"Coś poszło żle 2","Tytuł 2",true));
+            faultsRepository.save(new Faults(null,flatsRepository.findById(idFlat2).get(),"Coś poszło żle 3","Tytuł 3",true));
+            faultsRepository.save(new Faults(null,flatsRepository.findById(idFlat2).get(),"Coś poszło żle 4","Tytuł 4",true));
 
             userRepository.save(new User(null, "admin123", passwordEncoder.encode("apassword123"), "admin@email.com", "Jan", "Kowalski", "513238338", roleRepository.findByName("ADMIN"),flatsRepository.findById(idFlat).get()));
             userRepository.save(new User(null, "1812", passwordEncoder.encode("122"), "admin4@email.com", "Adam", "Adamski", "513238358", roleRepository.findByName("EMPLOYEE"),flatsRepository.findById(idFlat1).get()));
