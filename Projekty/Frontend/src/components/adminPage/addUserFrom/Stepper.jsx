@@ -14,8 +14,9 @@ import Typography from '@material-ui/core/Typography';
 import AddUserForm from "../addUserFrom/AddUserForm";
 import AddFlatForm from "../addUserFrom/AddFlatForm";
 import FormSummary from "../addUserFrom/FormSummary";
-import { selectAll, addUser, setError } from "../../../features/addUserSlice/addUserSlice";
+import { selectAll, addUser, setError, reset } from "../../../features/addUserSlice/addUserSlice";
 import { ValidatorForm } from 'react-material-ui-form-validator';
+import { useAlert } from 'react-alert';
 
 
 const ColorlibConnector = withStyles({
@@ -119,6 +120,7 @@ function getStepContent(step) {
 
 export default function CustomizedSteppers() {
   const classes = useStyles();
+  const alert = useAlert();
   const [activeStep, setActiveStep] = React.useState(0);
   const dispatch = useDispatch();
   const userSelect = useSelector(selectAll);
@@ -233,7 +235,7 @@ export default function CustomizedSteppers() {
         postalCode &&
         street &&
         number) {
-        dispatch(addUser(user));
+        dispatch(addUser(user, alert));
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
       }
       else {
@@ -248,6 +250,7 @@ export default function CustomizedSteppers() {
   };
 
   const handleReset = () => {
+    dispatch(reset());
     setActiveStep(0);
   };
 

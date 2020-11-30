@@ -3,9 +3,11 @@ import { Form, Col, InputGroup, FormControl } from "react-bootstrap";
 import ErrorIcon from '@material-ui/icons/Error';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import { Button } from "@material-ui/core";
+import { useAlert } from "react-alert";
 
 
 const PaymentsForm = ({ onPointerLeave, user, handleRentCostChange, handleRubbishCostCostChange, handleWaterCostCostChange, index, info, option }) => {
+  const alert = useAlert();
   return (
     <tr style={{ width: "100%" }}>
       <td style={{ width: "3%" }}>{index + 1}</td>

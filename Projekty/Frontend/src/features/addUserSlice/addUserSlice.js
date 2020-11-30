@@ -86,6 +86,25 @@ export const addUserSlice = createSlice({
     setError: (state, action) => {
       state.onError = action.payload;
     },
+    reset: (state) => {
+      state.firstname = "";
+      state.lastname = "";
+      state.email = "";
+      state.login = "";
+      state.phoneNumber = "";
+      state.password = "";
+      state.rePassword = "";
+      state.role = "";
+      state.area = "";
+      state.flor = "";
+      state.peopleInFlat = "";
+      state.rooms = "";
+      state.isBalcony = "";
+      state.town = "";
+      state.postalCode = "";
+      state.street = "";
+      state.number = "";
+    },
   },
 });
 
@@ -109,19 +128,22 @@ export const {
   setStreet,
   setNumber,
   setError,
+  reset,
 } = addUserSlice.actions;
 
 export const selectAll = (state) => state.addUser;
 
-export const addUser = (userCration) => async (dispatch) => {
+export const addUser = (userCration, alert) => async (dispatch) => {
   try {
     await axios.post(API_URL + "/a/user", userCration, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
+    alert.success("Operacja przebiegła pomyślnie.");
   } catch (error) {
     console.log(error);
+    alert.error("Coś poszło źle.");
   }
 };
 

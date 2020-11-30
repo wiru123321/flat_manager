@@ -23,15 +23,23 @@ export const {
 
 export const selectAnnouncement = (state) => state.announcements.announcements;
 
-export const addAnnoncement = (announcement) => async (dispatch) => {
+export const addAnnoncement = (announcement, alert) => async (dispatch) => {
     try {
-        await axios.post(API_URL + "/a/addAnnouncement", announcement, {
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-        });
+        if (announcement.title && announcement.adminMessage) {
+            await axios.post(API_URL + "/a/addAnnouncement", announcement, {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+            });
+            alert.success("Operacja przebiegła pomyślnie.");
+        }
+        else {
+            alert.error("Błąd, prosze wprowadzić dane.");
+        }
+
     } catch (error) {
         console.log(error);
+        alert.error("Coś poszło źle.");
     }
 };
 
@@ -48,7 +56,7 @@ export const fetchAnnouncements = () => async (dispatch) => {
     }
 };
 
-export const deleteAnnouncement = (index) => async (dispatch) => {
+export const deleteAnnouncement = (index, alert) => async (dispatch) => {
     try {
         await axios.delete(API_URL + `/a/deleteAnnouncement/${index}`, {
             headers: {
@@ -56,7 +64,9 @@ export const deleteAnnouncement = (index) => async (dispatch) => {
             },
         });
         dispatch(fetchAnnouncements());
+        alert.success("Operacja przebiegła pomyślnie.");
     } catch (error) {
+        alert.error("Coś poszło źle.");
     }
 };
 

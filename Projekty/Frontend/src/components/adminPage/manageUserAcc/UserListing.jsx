@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import UserInfoManager from "./UserInfoManager";
 import { useDispatch } from "react-redux"
 import { deleteUser } from "../../../features/userSlice/userSlice";
+import { useAlert } from "react-alert";
 
 const useStyles = makeStyles((theme) => ({
   backdrop: {
@@ -13,12 +14,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const UserListing = ({ info, index }) => {
+  const alert = useAlert();
   const classes = useStyles();
   const dispatch = useDispatch();
 
   const [open, setOpen] = React.useState(false);
   const handleClose = () => {
-    dispatch(deleteUser(info.login));
+    dispatch(deleteUser(info.login, alert));
     console.log(info.login)
     setOpen(false);
     window.location.reload(false);

@@ -2,9 +2,11 @@ import { Container, TextareaAutosize, Grid, Button, TextField } from '@material-
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from "react-redux";
 import { addAnnoncement } from "../../../features/announcementsSlice/announcementsSlice";
+import { useAlert } from "react-alert";
 
 const AddAnnouncements = () => {
     const dispatch = useDispatch();
+    const alert = useAlert();
     const now = new Date();
     const currentMonth = (now.getMonth() + 1).toString();
     const currentDay = (now.getDate()).toString();
@@ -35,7 +37,7 @@ const AddAnnouncements = () => {
     };
     const handleClick = (event) => {
         console.log(announcementState)
-        dispatch(addAnnoncement(announcementState));
+        dispatch(addAnnoncement(announcementState, alert));
     };
 
     return (

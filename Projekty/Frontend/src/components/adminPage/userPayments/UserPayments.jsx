@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { updateUser } from "../../../features/userSlice/userSlice";
 import { useDispatch } from "react-redux";
 import PaymentsForm from "./PaymentsForm";
+import { useAlert } from "react-alert";
 
 const UserPayments = ({ user, index, option, dataToSubmit }) => {
   const dispatch = useDispatch();
+  const alert = useAlert();
   const [userPaymentsState, setUserPaymentsState] = useState({
     rentCost: user.flatsDTO.userAccountDTO.rentCost,
     rubbishCost: user.flatsDTO.userAccountDTO.rubbishCost,
@@ -24,7 +26,7 @@ const UserPayments = ({ user, index, option, dataToSubmit }) => {
     });
   };
   const submit = (event) => {
-    dispatch(updateUser(user.login, userPaymentsState));
+    dispatch(updateUser(user.login, userPaymentsState, alert));
   }
 
   const handleRubbishCostCostChange = (event) => {

@@ -11,6 +11,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useDispatch } from "react-redux"
 import { makeStyles } from '@material-ui/core/styles';
 import { updateUserFault } from "../../../features/userFaultsSlice/userFaultSlice";
+import { useAlert } from "react-alert";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,9 +29,10 @@ const useStyles = makeStyles((theme) => ({
 
 const ListFaults = ({ user, faults, btnHandlerBack }) => {
     const classes = useStyles();
+    const alert = useAlert();
     const dispatch = useDispatch();
     const toggleButton = (fault) => {
-        dispatch(updateUserFault(fault.id, fault));
+        dispatch(updateUserFault(fault.id, fault, alert));
         window.location.reload(false);
     }
     return (

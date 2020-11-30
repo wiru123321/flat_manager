@@ -82,14 +82,16 @@ export const fetchDisActiveFaults = () => async (dispatch) => {
     }
 };
 
-export const updateUserFault = (id, faults) => async (dispatch) => {
+export const updateUserFault = (id, faults, alert) => async (dispatch) => {
     try {
         await axios.put(API_URL + "/a/disactivateUserFault/" + id, faults, {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },
         });
+        alert.success("Operacja przebiegła pomyślnie.");
     } catch (error) {
+        alert.error("Coś poszło źle.");
     }
 };
 

@@ -11,6 +11,7 @@ import AnnouncementIcon from '@material-ui/icons/Announcement';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useDispatch } from "react-redux";
 import { deleteAnnouncement } from "../../../features/announcementsSlice/announcementsSlice";
+import { useAlert } from "react-alert";
 
 const useStyles = makeStyles({
     root: {
@@ -20,11 +21,12 @@ const useStyles = makeStyles({
 
 const ShowAnnouncement = ({ title, content, data, index, ifUser }) => {
     const dispatch = useDispatch();
+    const alert = useAlert();
     const classes = useStyles();
     console.log(data)
     const newData = data.split("T", 1);
     const handleClick = () => {
-        dispatch(deleteAnnouncement(index));
+        dispatch(deleteAnnouncement(index, alert));
     }
     return (
         <Card className={classes.root}>

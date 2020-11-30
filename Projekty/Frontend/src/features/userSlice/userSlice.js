@@ -53,7 +53,7 @@ export const fetchUsers = () => async (dispatch) => {
   }
 };
 
-export const updateUser = (addId, userAccount) => async (dispatch) => {
+export const updateUser = (addId, userAccount, alert) => async (dispatch) => {
   try {
     await axios.put(API_URL + `/a/user/${addId}`, userAccount, {
       headers: {
@@ -61,11 +61,13 @@ export const updateUser = (addId, userAccount) => async (dispatch) => {
       },
     });
     dispatch(fetchUsers());
+    alert.success("Operacja przebiegła pomyślnie.");
   } catch (error) {
+    alert.error("Coś poszło źle.");
   }
 };
 
-export const deleteUser = (login) => async (dispatch) => {
+export const deleteUser = (login, alert) => async (dispatch) => {
   try {
     await axios.delete(API_URL + `/a/user/${login}`, {
       headers: {
@@ -73,7 +75,9 @@ export const deleteUser = (login) => async (dispatch) => {
       },
     });
     dispatch(fetchUsers());
+    alert.success("Operacja przebiegła pomyślnie.");
   } catch (error) {
+    alert.error("Coś poszło źle.");
   }
 };
 
