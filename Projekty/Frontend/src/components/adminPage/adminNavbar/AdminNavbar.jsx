@@ -44,7 +44,7 @@ const AdminNavbar = () => {
   return (
     <>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="/adminPage"><Image src={Logo} width="70"
+        <Navbar.Brand href="#/addUserAcc"><Image src={Logo} width="70"
           height="70"
           style={{ zIndex: "3" }} /></Navbar.Brand>
         <Nav className="mr-auto" style={{ fontSize: "17px" }}>
