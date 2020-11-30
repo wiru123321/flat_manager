@@ -75,15 +75,17 @@ public class DatabaseLoader implements CommandLineRunner {
 
             Long idFlat2 = flatsRepository.save(new Flats(null,553,31,22,32,true,true,adressRepository.findById(id2).get(),userAccountRepository.findById(idAcc2).get())).getId();
 
-            announcementsRepository.save((new Announcements(null,"Nowa wiadomość 1",true,"Nowa 1",LocalDateTime.of(2020, 11, 28, 0, 0),105674)));
-            announcementsRepository.save((new Announcements(null,"Nowa wiadomość 2",true,"Nowa 2",LocalDateTime.of(2020, 11, 28, 0, 0),105346)));
-            announcementsRepository.save((new Announcements(null,"Nowa wiadomość 3",true,"Nowa 3",LocalDateTime.of(2020, 11, 29, 0, 0),105342)));
-            announcementsRepository.save((new Announcements(null,"Nowa wiadomość 4",true,"Nowa 4",LocalDateTime.of(2020, 11, 30, 0, 0),101114)));
+            announcementsRepository.save((new Announcements(null,"Podajemy godziny przeprowadzenia przetargu na ustanowienie i zbycie prawa odrębnej własności nieruchomości lokalowej w trybie ustnego przetargu nieograniczonego (licytacji), który odbędzie sie dnia 26.11.2020r.",true,"Przetargi",LocalDateTime.of(2020, 11, 28, 0, 0),105674)));
+            announcementsRepository.save((new Announcements(null,"Informujemy, iż dzień 24.12.2020r. jest dniem wolnym od pracy.\n" +
+                    "Ewentualne awarie należy zgłaszać do dyspozytora Spółdzielni w godz. 6:00 do 22:00.\n" +
+                    "Informujemy również, iż w dniu 31.12.2020r. tj. czwartek pracujemy w godz. 7:00 do 15:00, KASA w tym dniu jest czynna w godz. 7:00 do 11:00.",true,"Praca Spółdzielni",LocalDateTime.of(2020, 11, 28, 0, 0),105346)));
+            announcementsRepository.save((new Announcements(null,"MGSM \"Perspektywa\" informuje, że od 2 listopada 2020r place zabaw nie będą dezynfekowane. W celu ochrony życia i zdrowia mieszkańców Spółdzielni przed zakażeniem się wirusem COVID-19 prosimy o nie korzystanie z placów zabaw zlokalizowanych w naszych zasobach.",true,"Informacje na temat placów zabaw",LocalDateTime.of(2020, 11, 29, 0, 0),105342)));
+            announcementsRepository.save((new Announcements(null,"Informujemy, że Spółdzielnia zleciła dostawcom ciepła rozpoczęcie sezonu grzewczego 2020/2021 od dnia 23.09.2020r.\n" +
+                    "Dostawa ciepła dla poszczególnych budynków będzie odbywała się sukcesywnie. Nadmieniamy, że w niektórych budynkach trwają nadal prace związane z napełnianiem sieci oraz robotami instalacyjnymi, w tychże budynkach dostawa ciepła nastąpi po zakończeniu robót.",true,"Sezon grzewczy 2020/21",LocalDateTime.of(2020, 11, 30, 0, 0),101114)));
 
-            faultsRepository.save(new Faults(null,flatsRepository.findById(idFlat1).get(),"Coś poszło żle 1","Tytuł 1",true));
-            faultsRepository.save(new Faults(null,flatsRepository.findById(idFlat1).get(),"Coś poszło żle 2","Tytuł 2",true));
-            faultsRepository.save(new Faults(null,flatsRepository.findById(idFlat2).get(),"Coś poszło żle 3","Tytuł 3",true));
-            faultsRepository.save(new Faults(null,flatsRepository.findById(idFlat2).get(),"Coś poszło żle 4","Tytuł 4",true));
+            faultsRepository.save(new Faults(null,flatsRepository.findById(idFlat1).get(),"Proszę o wysłanie osoby odpowiedzialnej za sprzątanie klatki schodowej do mojego bloku, ponieważ jest strasznie brudno na klatce schodowej.","Brudna klatka schodowa",true));
+            faultsRepository.save(new Faults(null,flatsRepository.findById(idFlat1).get(),"Proszę o dopilnowanie porządku przed blokiem po 22.","Hałas po 22",true));
+            faultsRepository.save(new Faults(null,flatsRepository.findById(idFlat2).get(),"Proszę o udzielenie zgody na wymiane drzwi wejściowych w moim mieszkaniu.","Zgoda na wymiane drzwi wejściowych.",true));
 
             userRepository.save(new User(null, "admin123", passwordEncoder.encode("apassword123"), "admin@email.com", "Jan", "Kowalski", "513238338", roleRepository.findByName("ADMIN"),flatsRepository.findById(idFlat).get()));
             userRepository.save(new User(null, "1812", passwordEncoder.encode("122"), "admin4@email.com", "Adam", "Adamski", "513238358", roleRepository.findByName("EMPLOYEE"),flatsRepository.findById(idFlat1).get()));
