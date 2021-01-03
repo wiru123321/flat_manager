@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Backdrop from '@material-ui/core/Backdrop';
+import { Backdrop, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux"
 import { deleteUser } from "../../../features/userSlice/userSlice";
@@ -49,13 +49,16 @@ const UserListingFaults = ({ info, index }) => {
     };
     return (
         <>
-            <tr style={{ width: "100%" }} onClick={handleToggle}>
+            <tr style={{ width: "100%" }}>
                 <td style={{ width: "3%" }}>{index + 1}</td>
                 <td>{info.name}</td>
                 <td>{info.surname}</td>
                 <td>{info.email} </td>
                 <td>{info.phoneNumber}</td>
                 <td>{getNumberOf()}</td>
+                <td><Button variant="contained" color="secondary" onClick={handleToggle} style={{ height: '3vh' }}>
+                    Pokaż zgłoszenia
+</Button></td>
             </tr>
             <Backdrop className={classes.backdrop} open={open}>
                 <ListFaults user={info} faults={faults} btnHandlerBack={btnHandlerBack} />

@@ -48,7 +48,7 @@ export const login = ({ login, password }) => {
       localStorage.setItem("login", login);
       if (role === "ADMIN") {
         dispatch(setRedirectAddress("/adminPage#/addUserAcc"));
-      } else if (role === "EMPLOYEE") {
+      } else if (role === "RESIDENT") {
         dispatch(setRedirectAddress("/userPage#/checkBills"));
       }
       dispatch(allowRedirect(true));

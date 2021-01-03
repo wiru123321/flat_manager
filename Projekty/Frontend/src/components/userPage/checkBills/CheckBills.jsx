@@ -15,8 +15,13 @@ const CheckBills = () => {
     }, []);
     return (
         <>
+            <div style={{ width: '98vw', textAlign: 'center', marginTop: '10vh' }}>
+                <p style={{ fontWeight: 'bold', fontSize: '30px' }}>
+                    Opłaty mieszkańca
+                </p>
+            </div>
             {user.flatsDTO ?
-                <Container style={{ height: "89.6vh", margin: "0", padding: "0", minWidth: "98vw", textAlign: "center" }}>
+                <Container style={{ height: "50.6vh", margin: "0", padding: "0", minWidth: "98vw", textAlign: "center", marginTop: "15vh" }}>
                     <Grid container spacing={3} >
                         <Grid item md={4} xs={12} style={{ marginTop: "5vh" }}>
                             <InvertColorsIcon style={{ fontSize: 70 }} />

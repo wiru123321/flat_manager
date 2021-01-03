@@ -25,7 +25,7 @@ public class AnnouncementsController {
         return ResponseEntity.ok(announcementsService.addEntityToDB(announcements));
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/e/announcement")
+    @RequestMapping(method = RequestMethod.GET, value = "/r/announcement")
     public ResponseEntity<?> getAllActiveAnnouncement() {
         final List<AnnouncementsDTO> announcementDTOList = announcementsService.getAllActiveAnnouncementsDTOs();
         return ResponseEntity.ok(announcementDTOList);

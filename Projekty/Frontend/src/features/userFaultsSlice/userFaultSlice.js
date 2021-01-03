@@ -45,7 +45,7 @@ export const addFault = (userFault) => async (dispatch) => {
 
 export const fetchActiveFaultsByLogin = (login) => async (dispatch) => {
     try {
-        const response = await axios.get(API_URL + "/e/getActiveFaults/" + login, {
+        const response = await axios.get(API_URL + "/r/getActiveFaults/" + login, {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },
@@ -58,7 +58,7 @@ export const fetchActiveFaultsByLogin = (login) => async (dispatch) => {
 
 export const fetchActiveFaults = () => async (dispatch) => {
     try {
-        const response = await axios.get(API_URL + "/e/getActiveFaults", {
+        const response = await axios.get(API_URL + "/r/getActiveFaults", {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },
@@ -71,7 +71,7 @@ export const fetchActiveFaults = () => async (dispatch) => {
 
 export const fetchDisActiveFaults = () => async (dispatch) => {
     try {
-        const response = await axios.get(API_URL + "/e/getDisActiveFaults", {
+        const response = await axios.get(API_URL + "/r/getDisActiveFaults", {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },

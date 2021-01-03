@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -7,7 +7,9 @@ import AppBar from '@material-ui/core/AppBar';
 import { selectUsers, fetchUsers } from "../../../features/userSlice/userSlice";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { Grid, TextField } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import Box from '@material-ui/core/Box';
 import UserPayments from "./UserPayments";
 import { Table } from "react-bootstrap";
@@ -78,7 +80,8 @@ const UsersPayments = () => {
     dispatch(fetchUsers());
   }, []);
   const users = useSelector(selectUsers);
-  console.log(users)
+  const [value1, setValue1] = useState();
+  const [inputValue, setInputValue] = useState('');
   return (
     <div className={classes.root}>
       <AppBar position="static" color="default">
@@ -106,6 +109,27 @@ const UsersPayments = () => {
                 style={{ width: "10%", fontWeight: "bold" }}
               >Okres rozliczeniowy: {monthNames[currentMonth - 1]} {year}</a>
             </div>
+            <Grid container spacing={1} justify="center" alignContent="center" style={{ marginTop: '2vh', marginBottom: '2vh' }}>
+              <Grid xs={3} item style={{ marginTop: "3vh", marginBottom: "3vh" }} justify="center">
+              </Grid>
+              <Grid xs={5} item >
+                <Autocomplete
+                  id="combo-box-demo"
+                  value={value1}
+                  onChange={newValue => {
+                    setValue1(newValue);
+                  }}
+                  inputValue={inputValue}
+                  onInputChange={(event, newInputValue) => {
+                    setInputValue(newInputValue);
+                  }}
+                  options={users}
+                  getOptionLabel={(option) => option.surname}
+                  style={{ width: 230 }}
+                  renderInput={(params) => <TextField {...params} label="Wyszukaj po nazwisku" variant="outlined" />}
+                />
+              </Grid>
+            </Grid>
             <Table striped bordered hover size="sm" responsive style={{ height: "100%", textAlign: "center" }}>
               <thead>
                 <tr>
@@ -120,7 +144,7 @@ const UsersPayments = () => {
               </thead>
               <tbody>
                 {
-                  users.map((user, index) => <UserPayments user={user} index={index} option={true} dataToSubmit={dataToSubmit} />)
+                  users.map((user, index) => <> {inputValue === '' ? <UserPayments user={user} index={index} option={true} dataToSubmit={dataToSubmit} /> : (user.surname === inputValue ? <UserPayments user={user} index={index} option={true} dataToSubmit={dataToSubmit} /> : null)} </>)
                 }
               </tbody>
             </Table>
@@ -128,6 +152,27 @@ const UsersPayments = () => {
         </TabPanel>
         <TabPanel value={value} index={1} dir={theme.direction}>
           <div style={{ height: "100%", width: '98vw' }}>
+            <Grid container spacing={1} justify="center" alignContent="center" style={{ marginTop: '2vh', marginBottom: '2vh' }}>
+              <Grid xs={3} item style={{ marginTop: "3vh", marginBottom: "3vh" }} justify="center">
+              </Grid>
+              <Grid xs={5} item >
+                <Autocomplete
+                  id="combo-box-demo"
+                  value={value1}
+                  onChange={newValue => {
+                    setValue1(newValue);
+                  }}
+                  inputValue={inputValue}
+                  onInputChange={(event, newInputValue) => {
+                    setInputValue(newInputValue);
+                  }}
+                  options={users}
+                  getOptionLabel={(option) => option.surname}
+                  style={{ width: 230 }}
+                  renderInput={(params) => <TextField {...params} label="Wyszukaj po nazwisku" variant="outlined" />}
+                />
+              </Grid>
+            </Grid>
             <Table striped bordered hover size="sm" responsive style={{ height: "100%", textAlign: "center" }}>
               <thead>
                 <tr>
@@ -141,7 +186,7 @@ const UsersPayments = () => {
               </thead>
               <tbody>
                 {
-                  users.map((user, index) => <UserPayments user={user} index={index} option={false} />)
+                  users.map((user, index) => <> {inputValue === '' ? <UserPayments user={user} index={index} option={false} /> : (user.surname === inputValue ? <UserPayments user={user} index={index} option={false} /> : null)} </>)
                 }
 
               </tbody>

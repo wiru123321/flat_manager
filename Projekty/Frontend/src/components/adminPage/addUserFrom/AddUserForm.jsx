@@ -46,22 +46,31 @@ const AddUserForm = () => {
       container
       justify="center"
     >
-      <Paper elevation={8} style={{ width: "40vw", height: "50vh", marginTop: "3vh" }}>
+      <Paper elevation={8} style={{ width: "40vw", height: "57vh", marginTop: "3vh" }}>
         <Grid
           container
           direction="column"
           alignItems="center"
         >
           <Grid container
+            direction="column"
+            justify="space-evenly"
+            alignItems="center"
+            style={{ width: "35vw", marginBottom: "3vh", marginTop: "2vh" }}>
+            <Grid item xs={12} >
+              <p style={{ fontWeight: 'bold', fontSize: "22px" }}>Wprowadź dane urzytkownika</p>
+            </Grid>
+          </Grid>
+          <Grid container
             direction="row"
             justify="space-evenly"
             alignItems="center"
-            style={{ width: "25vw", marginBottom: "3vh" }}>
-            <Grid item xs={6} >
+            style={{ width: "35vw", marginBottom: "3vh" }}>
+            <Grid item xs={5} >
               <TextValidator id="outlined-basic" label="Wprowadź imie" variant="outlined"
                 onChange={handleFirstnameChange} value={firstname} validators={['required']} errorMessages={['this field is required']} />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <TextValidator id="outlined-basic" label="Wprowadź nazwisko" variant="outlined"
                 onChange={handleLastnameChange} value={lastname} validators={['required']} errorMessages={['this field is required']} />
             </Grid>
@@ -70,12 +79,12 @@ const AddUserForm = () => {
             direction="row"
             justify="space-evenly"
             alignItems="center"
-            style={{ width: "25vw", marginBottom: "3vh" }}>
-            <Grid item xs={6}>
+            style={{ width: "35vw", marginBottom: "3vh" }}>
+            <Grid item xs={5}>
               <TextValidator id="outlined-basic" label="Wprowadź email" variant="outlined"
                 onChange={handleEmailChange} value={email} validators={['required', 'isEmail']} errorMessages={['this field is required', 'email is not valid']} />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <TextValidator id="outlined-basic" label="Wprowadź telefon" variant="outlined"
                 onChange={handlePhoneNumberChange} value={phoneNumber} validators={['required', "minStringLength:9", "maxStringLength:9"]} errorMessages={['this field is required', 'Numer posiada 9 liczb']} />
             </Grid>
@@ -87,11 +96,11 @@ const AddUserForm = () => {
             direction="row"
             justify="space-evenly"
             alignItems="center"
-            style={{ width: "25vw", marginBottom: "3vh" }}>
-            <Grid item xs={6}>
+            style={{ width: "35vw", marginBottom: "3vh" }}>
+            <Grid item xs={5}>
               <TextValidator id="outlined-basic" label="Wprowadź hasło" type="password" variant="outlined" onChange={handlePasswordChange} value={password} validators={['required']} errorMessages={['this field is required']} />
             </Grid>
-            <Grid item xs={6} >
+            <Grid item xs={5} >
               <TextValidator id="outlined-basic" label="Powtórz hasło" type="password" variant="outlined" onChange={handleRePasswordChange} value={rePassword} validators={['isPasswordMatch', 'required']} errorMessages={['password mismatch', 'this field is required']} />
             </Grid>
 
@@ -102,6 +111,7 @@ const AddUserForm = () => {
             required
             onChange={(event) => dispatch(setRole(event.target.value))}
             value={role}
+            style={{ width: '10vw' }}
           >
             <MenuItem value="EMPLOYEE">Mieszkaniec</MenuItem>
             <MenuItem value="ADMIN">Administrator</MenuItem>

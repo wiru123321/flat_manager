@@ -49,7 +49,7 @@ const ShowFaults = ({ faults, showBtn }) => {
                     startIcon={<DeleteIcon />}
                     onClick={() => btnHandler(faults.id)}
                 >
-                    Delete
+                    Usuń
                         </Button> : null}
 
             </CardActions>

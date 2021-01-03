@@ -53,25 +53,34 @@ const AddFlatForm = () => {
       container
       justify="center"
     >
-      <Paper elevation={8} style={{ width: "40vw", height: "50vh", marginTop: "3vh" }}>
+      <Paper elevation={8} style={{ width: "40vw", height: "57vh", marginTop: "3vh" }}>
         <Grid
           container
           direction="column"
           alignItems="center"
         >
           <Grid container
+            direction="column"
+            justify="space-evenly"
+            alignItems="center"
+            style={{ width: "35vw", marginBottom: "3vh", marginTop: "2vh" }}>
+            <Grid item xs={12} >
+              <p style={{ fontWeight: 'bold', fontSize: "22px" }}>Wprowadź dane mieszkania</p>
+            </Grid>
+          </Grid>
+          <Grid container
             direction="row"
             justify="space-evenly"
             alignItems="center"
-            style={{ width: "25vw" }}>
-            <Grid item xs={6}>
+            style={{ width: "35vw" }}>
+            <Grid item xs={5}>
               <InputData
                 onChangeHandler={handleAreaChange}
                 value={area}
                 label={"Wprowadź metraż"}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <InputData
                 onChangeHandler={handleFlorChange}
                 value={flor}
@@ -83,15 +92,15 @@ const AddFlatForm = () => {
             direction="row"
             justify="space-evenly"
             alignItems="center"
-            style={{ width: "25vw" }}>
-            <Grid item xs={6}>
+            style={{ width: "35vw" }}>
+            <Grid item xs={5}>
               <InputData
                 onChangeHandler={handlePeopleInFlatChange}
                 value={peopleInFlat}
                 label={"Wprowadź ilość osób"}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <InputData
                 onChangeHandler={handleRoomsChange}
                 value={rooms}
@@ -114,15 +123,15 @@ const AddFlatForm = () => {
             direction="row"
             justify="space-evenly"
             alignItems="center"
-            style={{ width: "25vw", marginTop: "3vh" }}>
-            <Grid item xs={6}>
+            style={{ width: "35vw", marginTop: "3vh" }}>
+            <Grid item xs={5}>
               <InputData
                 onChangeHandler={handleTownChange}
                 value={town}
                 label={"Wprowadź miasto"}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <InputData
                 onChangeHandler={handlePostalCodeChange}
                 value={postalCode}
@@ -134,15 +143,15 @@ const AddFlatForm = () => {
             direction="row"
             justify="space-evenly"
             alignItems="center"
-            style={{ width: "25vw" }}>
-            <Grid item xs={6}>
+            style={{ width: "35vw" }}>
+            <Grid item xs={5}>
               <InputData
                 onChangeHandler={handleStreetChange}
                 value={street}
                 label={"Wprowadź ulice"}
               />
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={5}>
               <InputData
                 onChangeHandler={handleNumberChange}
                 value={number}

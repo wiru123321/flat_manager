@@ -212,7 +212,7 @@ public class UserService implements UserServiceInterface {
 
     @Override
     public List<UserDTO> getAllActiveUserDTOs() {
-        final ArrayList<User> userArrayList = new ArrayList<>(userRepository.findAllByIsActiveAndAndRole_Name(true,"EMPLOYEE"));
+        final ArrayList<User> userArrayList = new ArrayList<>(userRepository.findAllByIsActiveAndAndRole_Name(true,"RESIDENT"));
         return this.mapRestList(userArrayList);
     }
 

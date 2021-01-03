@@ -45,7 +45,7 @@ export const addAnnoncement = (announcement, alert) => async (dispatch) => {
 
 export const fetchAnnouncements = () => async (dispatch) => {
     try {
-        const response = await axios.get(API_URL + "/e/announcement", {
+        const response = await axios.get(API_URL + "/r/announcement", {
             headers: {
                 Authorization: "Bearer " + localStorage.getItem("token"),
             },

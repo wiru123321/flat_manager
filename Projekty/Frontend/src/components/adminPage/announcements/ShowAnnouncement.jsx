@@ -55,7 +55,7 @@ const ShowAnnouncement = ({ title, content, data, index, ifUser }) => {
                             startIcon={<DeleteIcon />}
                             onClick={handleClick}
                         >
-                            Delete
+                            Usuń
                         </Button>
                 }
             </CardActions>

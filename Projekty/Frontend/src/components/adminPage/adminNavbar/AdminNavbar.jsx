@@ -58,7 +58,7 @@ const AdminNavbar = () => {
           </Badge></Nav.Link>
         </Nav>
         <Form inline>
-          <Button variant="outline-info" onClick={handleLogout} href="/login">Wyloguj</Button>
+          <Button variant="outline-info" onClick={handleLogout} href="/login" style={{ marginRight: '20px' }}>Wyloguj</Button>
         </Form>
       </Navbar>
     </>

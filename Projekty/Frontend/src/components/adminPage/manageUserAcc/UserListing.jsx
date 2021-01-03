@@ -1,5 +1,5 @@
 import React from 'react';
-import Backdrop from '@material-ui/core/Backdrop';
+import { Backdrop, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import UserInfoManager from "./UserInfoManager";
 import { useDispatch } from "react-redux"
@@ -34,12 +34,15 @@ const UserListing = ({ info, index }) => {
   };
   return (
     <>
-      <tr style={{ width: "100%" }} onClick={handleToggle}>
+      <tr style={{ width: "100%" }}>
         <td style={{ width: "3%" }}>{index + 1}</td>
         <td>{info.name}</td>
         <td>{info.surname}</td>
         <td>{info.email} </td>
         <td>{info.phoneNumber}</td>
+        <td><Button variant="contained" color="secondary" onClick={handleToggle} style={{ height: '3vh' }}>
+          Usuń
+</Button></td>
       </tr>
       <Backdrop className={classes.backdrop} open={open}>
         <UserInfoManager btnHandler={handleClose} user={info} btnHandlerBack={btnHandlerBack} />

@@ -35,19 +35,19 @@ public class FaultsController {
         return ResponseEntity.ok(faultsService.addEntityToDB(newFault));
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/e/getActiveFaults/{login}")
+    @RequestMapping(method = RequestMethod.GET, value = "/r/getActiveFaults/{login}")
     public ResponseEntity<?> getActiveFaults(@PathVariable final String login) {
         final Long flat_id = userService.getEntityByLogin(login).getFlats().getId();
         final List<FaultsDTO> faultsDTOList = faultsService.getActiveFaultsDTOs(flat_id);
         return ResponseEntity.ok(faultsDTOList);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/e/getActiveFaults")
+    @RequestMapping(method = RequestMethod.GET, value = "/r/getActiveFaults")
     public ResponseEntity getAllActiveFaults() {
         return ResponseEntity.ok(faultsService.getAllActiveFaultsDTOs());
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/e/getDisActiveFaults")
+    @RequestMapping(method = RequestMethod.GET, value = "/r/getDisActiveFaults")
     public ResponseEntity getAllDisActiveFaults() {
         return ResponseEntity.ok(faultsService.getAllDisActiveFaultsDTOs());
     }
